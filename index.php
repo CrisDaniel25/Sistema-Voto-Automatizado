@@ -32,7 +32,7 @@ function closeNav() {
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
          <li class="nav-item active">
-          <span onclick="openNav()" class="btn btn-info">Iniciar Session</span>
+          <a onclick="openNav()" class="btn btn-info"><span>Iniciar Session</span></a>
          </li>
         </ul>
     </nav>
