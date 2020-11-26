@@ -1,14 +1,22 @@
 
 <?php
 
-$correo = $_POST['correo'];
-$clave = $_POST['clave'];
+require_once '../AdminModel/AdminControl.php';
+require_once '../AdminModel/admin.php';
 
+if(isset($_POST['correo']) && isset($_POST['clave'])){
+        $Am = new AdminControl();
+        $admin = new Administrador();
+    
 
     if(empty($correo) || empty($clave)){
-         header('Location: ../AdminView/Login.php');
+        $admin->correo = $_POST['correo'];
+        $admin->clave = $_POST['clave'];
+        $Am->Login($admin->correo,$admin->clave);        
    }
   
+}
+
 
 
 ?>

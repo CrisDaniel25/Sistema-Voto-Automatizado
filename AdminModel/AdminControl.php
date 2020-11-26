@@ -7,17 +7,17 @@ class AdminControl extends DB{
 
     function Login($correo,$clave){
         $admin = new Administrador();
-        $query = "SELECT * FROM administrador WHERE correo=:correo AND clave=:clave";
+        $query = "SELECT * FROM administrador WHERE correo=:correo";
         $stat = $this->connect()->prepare($query);
         $admin->correo = $correo;
         $admin->clave = $clave;
         $stat->bindParam(':correo',$admin->correo);
         $stat->bindParam(':clave',$admin->clavee);
-        $stat.execute();
+        $stat->execute();
         $result = $stat->fetch(PDO::FETCH_ASSOC);
-        if(count($result) > 0 && password_verify($admin->clave)){
+        if(count($result) > 0 ){
             $_SESSION['adminid'] = $result['id'];
-            header('Location: ');
+            header('Location: ../AdminView/AdminHome.php');
         }
 
     }
