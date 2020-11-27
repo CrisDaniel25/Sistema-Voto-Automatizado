@@ -16,56 +16,49 @@ $admin = new Administrador();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../Design/design.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
-     <style>
 
-        .divbt:hover{
-            background:#252525;
-            cursor:pointer;
-        }
-
-     </style>
-      
+    <title>Sistema de Voto Automatizado</title>
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../Design/design.css"/>
+        <link rel="stylesheet" href="../css/Style.css"/>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-
-<div>
-
-<div class="card text-white bg-info mb-2" style="max-width: 15rem;">
-
-  <div class="card-body text-light">
-    <h5 class="card-title">Candidadatos</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <div class="divbt">
-  <div class="card-footer bg-transparent border-light ">
-    
-    Administrar
- 
-  </div>
+<header>
+    <nav class="navbar navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+          <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
+         </li>
+        </ul>
+        <h4>Menu</h4>
+    </nav>
+  </header>
+    <div class="main">
+        <div class="row">
+                <ul>
+                    <li>
+                        <a href="CRUDManagement/CandidatosView.php" class="btn btn-primary btn-lg btn-block">Candidatos</a>
+                    </li>
+                    <li>
+                        <a href="CRUDManagement/PartidosView.php" class="btn btn-primary btn-lg btn-block">Partidos</a>
+                    </li>
+                    <li>
+                        <a href="CRUDManagement/PuestoView.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
+                    </li>
+                    <li>
+                        <a href="CRUDManagement/CiudadanosView.php" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>
+                    </li>
+                    <li>
+                        <a href="CRUDManagement/EleccionesView.php" class="btn btn-primary btn-lg btn-block">Elecciones</a>
+                    </li>
+                </ul>
+        </div>    
     </div>
-</div>
-
-<div class="card text-white bg-info mb-2" style="max-width: 15rem;">
-
-  <div class="card-body text-light">
-    <h5 class="card-title">Ciudadanos</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <div class="divbt">
-  <div class="card-footer bg-transparent border-light ">
-    
-    Administrar
- 
-  </div>
-    </div>
-</div>
-
-
-</div>
-
+>>>>>>> f59b5fa1f4153dfb0e7c1d0768fe320a98aacc3a
 </body>
 </html>
