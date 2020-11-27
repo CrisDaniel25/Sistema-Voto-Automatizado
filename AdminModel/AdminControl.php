@@ -12,12 +12,14 @@ class AdminControl extends DB{
         $admin->correo = $correo;
         $admin->clave = $clave;
         $stat->bindParam(':correo',$admin->correo);
-        $stat->bindParam(':clave',$admin->clavee);
         $stat->execute();
         $result = $stat->fetch(PDO::FETCH_ASSOC);
-        if(count($result) > 0 ){
+        if(count($result) > 0  && $admin->clave == $result['clave']){
             $_SESSION['adminid'] = $result['id'];
             header('Location: ../AdminView/AdminHome.php');
+        }
+        else{
+            header('Location: ../AdminView/Login.php');
         }
 
     }
