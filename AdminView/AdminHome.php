@@ -33,6 +33,7 @@ $admin = new Administrador();
           <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
         </ul>
+        <h4>Menu</h4>
     </nav>
   </header>
     <div class="main">
@@ -42,16 +43,16 @@ $admin = new Administrador();
                         <a href="CRUDManagement/CandidatosView.php" class="btn btn-primary btn-lg btn-block">Candidatos</a>
                     </li>
                     <li>
-                        <a href="" class="btn btn-primary btn-lg btn-block">Partidos</a>
+                        <a href="CRUDManagement/PartidosView.php" class="btn btn-primary btn-lg btn-block">Partidos</a>
                     </li>
                     <li>
-                        <a href="" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
+                        <a href="CRUDManagement/PuestoView.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
                     </li>
                     <li>
-                        <a href="" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>
+                        <a href="CRUDManagement/CiudadanosView.php" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>
                     </li>
                     <li>
-                        <a href="" class="btn btn-primary btn-lg btn-block">Elecciones</a>
+                        <a href="CRUDManagement/EleccionesView.php" class="btn btn-primary btn-lg btn-block">Elecciones</a>
                     </li>
                 </ul>
         </div>    
