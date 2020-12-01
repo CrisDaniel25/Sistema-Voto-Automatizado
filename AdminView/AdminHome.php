@@ -42,19 +42,19 @@ $admin = new Administrador();
         <div class="row">
                 <ul>
                     <li>
-                        <a href="CRUDManagement/CandidatosView.php" class="btn btn-primary btn-lg btn-block">Candidatos</a>
+                        <a href="AdmCandidatos/HomeCandidatos.php" class="btn btn-primary btn-lg btn-block">Candidatos</a>
                     </li>
                     <li>
-                        <a href="CRUDManagement/PartidosView.php" class="btn btn-primary btn-lg btn-block">Partidos</a>
+                        <a href="AdmPartidos/HomePartidos.php" class="btn btn-primary btn-lg btn-block">Partidos</a>
                     </li>
                     <li>
-                        <a href="CRUDManagement/PuestoView.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
+                        <a href="AdmPuestos/HomePuestos.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
                     </li>
                     <li>
-                        <a href="CRUDManagement/CiudadanosView.php" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>
+                        <a href="AdmCiudadanos/HomeCiudadanos.php" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>
                     </li>
                     <li>
-                        <a href="CRUDManagement/EleccionesView.php" class="btn btn-primary btn-lg btn-block">Elecciones</a>
+                        <a href="AdmElecciones/HomeElecciones.php" class="btn btn-primary btn-lg btn-block">Elecciones</a>
                     </li>
                 </ul>
         </div>    
