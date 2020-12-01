@@ -48,7 +48,7 @@ $admin = new Administrador();
                         <a href="CRUDManagement/PartidosView.php" class="btn btn-primary btn-lg btn-block">Partidos</a>
                     </li>
                     <li>
-                        <a href="CRUDManagement/PuestoView.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
+                        <a href="CRUDManagement/PuestosView.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
                     </li>
                     <li>
                         <a href="CRUDManagement/CiudadanosView.php" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>
@@ -59,6 +59,5 @@ $admin = new Administrador();
                 </ul>
         </div>    
     </div>
->>>>>>> f59b5fa1f4153dfb0e7c1d0768fe320a98aacc3a
 </body>
 </html>
