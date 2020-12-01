@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2020 a las 04:22:07
+-- Tiempo de generación: 01-12-2020 a las 13:27:18
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -34,11 +34,15 @@ CREATE TABLE `administrador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- RELACIONES PARA LA TABLA `administrador`:
+--
+
+--
 -- Volcado de datos para la tabla `administrador`
 --
 
 INSERT INTO `administrador` (`adminid`, `correo`, `clave`) VALUES
-(1, 'verlyn@gmail.com', '*5A4A4326ED9ADAAB56BA8A67ADABED5631F075AE');
+(1, 'verlyn@gmail.com', 'clave');
 
 -- --------------------------------------------------------
 
@@ -50,11 +54,15 @@ CREATE TABLE `candidatos` (
   `candidatoid` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
-  `partido` int(100) NOT NULL,
-  `puesto` int(100) NOT NULL,
+  `partidoid` int(11) NOT NULL,
+  `puestoid` int(11) NOT NULL,
   `foto` mediumblob NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELACIONES PARA LA TABLA `candidatos`:
+--
 
 -- --------------------------------------------------------
 
@@ -71,6 +79,10 @@ CREATE TABLE `ciudadanos` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `ciudadanos`:
+--
+
 -- --------------------------------------------------------
 
 --
@@ -83,6 +95,10 @@ CREATE TABLE `elecciones` (
   `fecha` date NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELACIONES PARA LA TABLA `elecciones`:
+--
 
 -- --------------------------------------------------------
 
@@ -98,6 +114,12 @@ CREATE TABLE `partidos` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELACIONES PARA LA TABLA `partidos`:
+--   `partidoid`
+--       `candidatos` -> `partidoid`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +132,12 @@ CREATE TABLE `puesto_electivo` (
   `descripcion` varchar(500) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELACIONES PARA LA TABLA `puesto_electivo`:
+--   `puestoid`
+--       `candidatos` -> `puestoid`
+--
 
 --
 -- Índices para tablas volcadas
@@ -125,7 +153,15 @@ ALTER TABLE `administrador`
 -- Indices de la tabla `candidatos`
 --
 ALTER TABLE `candidatos`
-  ADD PRIMARY KEY (`candidatoid`);
+  ADD PRIMARY KEY (`candidatoid`),
+  ADD KEY `puestoid` (`puestoid`),
+  ADD KEY `partidoid` (`partidoid`);
+
+--
+-- Indices de la tabla `partidos`
+--
+ALTER TABLE `partidos`
+  ADD PRIMARY KEY (`partidoid`);
 
 --
 -- Indices de la tabla `puesto_electivo`
@@ -150,10 +186,32 @@ ALTER TABLE `candidatos`
   MODIFY `candidatoid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `partidos`
+--
+ALTER TABLE `partidos`
+  MODIFY `partidoid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `puesto_electivo`
 --
 ALTER TABLE `puesto_electivo`
   MODIFY `puestoid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `partidos`
+--
+ALTER TABLE `partidos`
+  ADD CONSTRAINT `partidos_ibfk_1` FOREIGN KEY (`partidoid`) REFERENCES `candidatos` (`partidoid`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `puesto_electivo`
+--
+ALTER TABLE `puesto_electivo`
+  ADD CONSTRAINT `puesto_electivo_ibfk_1` FOREIGN KEY (`puestoid`) REFERENCES `candidatos` (`puestoid`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
