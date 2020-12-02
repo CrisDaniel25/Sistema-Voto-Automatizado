@@ -3,11 +3,12 @@ require_once '../../Model/Elecciones/elecciones.php';
 require_once '../../Data/DataBase.php';
 
     $db = new DB();
-    $query = "SELECT COUNT(eleccionesid) FROM elecciones";
+    $query = "SELECT * FROM elecciones";
     $result = $db->connect()->query($query);     
-    $lastid = $result->fetch();
 
-    echo "<p>".$lastid."</p>";
+    while($row = $result->fetch()) {
+        $lastid = $row['nombre'];
+    }
 
     if (isset($_POST['nombre']) && isset($_POST['fecha']) && isset($_POST['estado'])) {
 

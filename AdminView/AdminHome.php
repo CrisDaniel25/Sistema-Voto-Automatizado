@@ -30,7 +30,7 @@ $admin = new Administrador();
 <header>
     <nav class="navbar navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
           <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
@@ -40,7 +40,7 @@ $admin = new Administrador();
   </header>
     <div class="main">
         <div class="row">
-                <ul>
+                <ul style="list-style-type: none">
                     <li>
                         <a href="AdmCandidatos/HomeCandidatos.php" class="btn btn-primary btn-lg btn-block">Candidatos</a>
                     </li>
