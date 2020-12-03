@@ -41,8 +41,8 @@ require_once '../../Model/Ciudadano/ciudadano.php';
                 <input class="form-control" type="text" placeholder="Email" name="email" />  
                 <select class="form-control" name="estado">   
                     <option value="" style="display: none;">Estado</option>        
-                    <option value=true>Activo</option>        
-                    <option value=false>Inactivo</option>        
+                    <option value=1>Activo</option>        
+                    <option value=0>Inactivo</option>        
                 </select>           
 
                 <button class="btn btn-success">Guardar Formulario</button>

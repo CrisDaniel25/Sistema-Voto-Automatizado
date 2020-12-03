@@ -3,9 +3,10 @@ require_once '../../Data/DataBase.php';
 require_once '../../Model/Ciudadano/ciudadano.php';
     $db = new DB();
     $isContainid = isset($_GET['id']);
+    if ($isContainid) { $ciudadanoid = $_GET['id']; }
 
     if (empty($_POST)) {    
-        if ($isContainid) { $ciudadanoid = $_GET['id']; }
+        echo "<p>Without Post</p>";
         $query = "SELECT * FROM ciudadanos WHERE ciudadanoid={$ciudadanoid}";
         $result = $db->connect()->query($query);
         $data = $result->fetch();
@@ -13,10 +14,11 @@ require_once '../../Model/Ciudadano/ciudadano.php';
     }
 
     if ($_POST && isset($_POST['cedula']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email']) && isset($_POST['estado'])) {
+        echo "<p>Post</p>";
         $ciudadanos =  new Ciudadano($ciudadanoid,$_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['email'],$_POST['estado']);
-        $query = "UPDATE ciudadanos SET cedula='$ciudadanos->cedula',nombre='$ciudadanos->nombre',apellido='$ciudadanos->apellido',email='$ciudadanos->email',estado='$ciudadanos->estado' WHERE ciudadanoid={$ciudadanoid}";
+        $query = "UPDATE ciudadanos SET cedula='$ciudadanos->cedula',nombre='$ciudadanos->nombre',apellido='$ciudadanos->apellido',email='$ciudadanos->email',estado=$ciudadanos->estado WHERE ciudadanoid={$ciudadanoid}";
         $db->connect()->query($query);
-        header("location: Homeciudadanos.php");
+        //header("location: Homeciudadanos.php");
     }
 ?>
 
