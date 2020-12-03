@@ -1,6 +1,5 @@
 <?php
-
-    require_once '../../Data/DataBase.php';
+require_once '../../Data/DataBase.php';
 
     class ManagePuesto extends DB{
         function FilterNombrePuesto(){

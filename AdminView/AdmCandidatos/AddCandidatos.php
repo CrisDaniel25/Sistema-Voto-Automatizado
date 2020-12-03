@@ -1,9 +1,7 @@
-
 <?php
+    require_once '../../AdminModel/ManagePartido.php';
+    require_once '../../AdminModel/ManagePuesto.php';
 
-
-    require_once '../../AdminModel\ManagePartido.php';
-    require_once '../../AdminModel\ManagePuesto.php';
     $managepartido = new ManagePartido();
     $managepuesto = new ManagePuesto();
    

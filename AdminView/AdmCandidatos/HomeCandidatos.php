@@ -1,19 +1,13 @@
 <?php
 require_once '../../Data/DataBase.php';
-<<<<<<< HEAD
 // require_once '../../Model/Candidatos/candidatos.php';
-=======
-require_once '../../Model/Candidatos/candidados.php';
->>>>>>> 841f2b6921785bef502944fb296c9f6dd51b8fde
+
+require_once '../../Model/Candidatos/candidatos.php';
 
     $db = new DB();
     
     $query = "SELECT * FROM candidatos";
     $result = $db->connect()->query($query);
-<<<<<<< HEAD
-
-=======
->>>>>>> 841f2b6921785bef502944fb296c9f6dd51b8fde
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +35,6 @@ require_once '../../Model/Candidatos/candidados.php';
     </nav>
   </header>
 
-<<<<<<< HEAD
     <div>
         <a href="AddCandidatos.php">Agregar</a>
     </div>
@@ -54,7 +47,7 @@ require_once '../../Model/Candidatos/candidados.php';
                 </div>
             </div>
         </div>
-=======
+
   <div class="container">
     <div class="row">
         <form action="AddCandidatos.php" method="post" class="form-inline" id="formulario">
@@ -122,7 +115,6 @@ else
         </table>
     </div>
   </div>
->>>>>>> 841f2b6921785bef502944fb296c9f6dd51b8fde
 </body>
 </html>
 
