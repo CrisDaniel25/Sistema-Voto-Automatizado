@@ -30,7 +30,7 @@ function closeNav() {
     <header>
     <nav class="navbar navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
           <a onclick="openNav()" class="btn btn-info"><span>Iniciar Session</span></a>
          </li>

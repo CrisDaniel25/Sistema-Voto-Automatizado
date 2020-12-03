@@ -1,6 +1,14 @@
-
 <?php
+require_once '../../Model/PuestoElectoral/puesto.php';
+require_once '../../Data/DataBase.php';
 
+    $db = new DB();
+    $query = "SELECT * FROM puesto_electivo";
+    $result = $db->connect()->query($query);     
+    if( $result->rowCount() > 0) { while($row = $result->fetch()) { $lastid = $row['puestoid']; } }
+    else {
+        $lastid = 0;        
+    }
 
 ?>
 
