@@ -1,6 +1,10 @@
 
 <?php
 
+    require_once '../../AdminModel/ManagePuesto.php';
+
+    $managepuesto = new ManagePuesto();
+    $result = $managepuesto->MostrarPuestos();
 
 ?>
 
@@ -17,6 +21,13 @@
         <script src="../../js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <style>
+            .row{
+                margin-left:30px;
+            }
+
+        </style>
 </head>
 <body>
 <header>
@@ -29,6 +40,36 @@
         </ul>
     </nav>
   </header>
+    <a class="btn btn-dark" href="AddPuestos.php">Agregar</a>
+    <div class="row">
+            <div class="col col-3">
+            <div class="card" style="width: 18rem;">
+            <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
+                <div class="card-body">
+                    <h4 class="card-title"><?php echo $row['nombre']?></h4>
+                    <p class="card-text"><?php echo $row['descripcion']?></p>
+                    <a href="#" ><li class="glyphicon glyphicon-pencil"></li></a>
+                    <a href="#" ><li data-id="<?php echo $row['puestoid']?>" class="glyphicon glyphicon-trash cl"></li></a>
+                </div>
+                <?php endwhile?>
+                </div>
+            </div>
+        </div>
 
+    <script>
+
+$(document).ready(function(){
+
+    $(".cl").on("click", function(e){
+    e.preventDefault();
+
+        let id = $(this).data("id");
+       window.location.href = "EliminarPuestos.php?id=" + id;
+
+
+    }); 
+   
+    });
+    </script>    
 </body>
 </html>

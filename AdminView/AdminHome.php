@@ -48,10 +48,7 @@ $admin = new Administrador();
                         <a href="AdmPartidos/HomePartidos.php" class="btn btn-primary btn-lg btn-block">Partidos</a>
                     </li>
                     <li>
-
                         <a href="AdmPuestos/HomePuestos.php" class="btn btn-primary btn-lg btn-block">Puesto electivo</a>
-
-                      
                     </li>
                     <li>
                         <a href="AdmCiudadanos/HomeCiudadanos.php" class="btn btn-primary btn-lg btn-block">Ciudadanos</a>

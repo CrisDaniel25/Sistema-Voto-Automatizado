@@ -1,6 +1,11 @@
-
 <?php
+require_once '../../Data/DataBase.php';
+// require_once '../../Model/Candidatos/candidatos.php';
 
+    $db = new DB();
+    
+    $query = "SELECT * FROM candidatos";
+    $result = $db->connect()->query($query);
 
 ?>
 
@@ -30,5 +35,24 @@
     </nav>
   </header>
 
+    <div>
+        <a href="AddCandidatos.php">Agregar</a>
+    </div>
+    <div class="main">
+            <div class="row">
+                <div class="col-text-center">
+                    <div class="col-sm-12">
+
+                     </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
+
+
+
+
+
+
+

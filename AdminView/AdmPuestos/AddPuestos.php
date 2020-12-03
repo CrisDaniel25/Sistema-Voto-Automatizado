@@ -29,6 +29,32 @@
         </ul>
     </nav>
   </header>
-
+  <div class="main">
+            <div class="row">
+                <div class="col-text-center">
+                    <div class="col-sm-12">
+                    <form method="POST" action="../../AdminController/AdmPuestos.php">
+                        <div class="form-group">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required/>
+                        <div>
+                        <div class="form-group">
+                            <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" required/>
+                        <div>
+                        <div class="form-group">
+                            <select class="form-control" name="estado" id="exampleFormControlSelect1">
+                          
+                            <option>Estado</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                            
+                            </select>
+                           
+                        </div>
+                        <input type="submit" value="Agregar" name="envio" class="btn btn-dark"/>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
