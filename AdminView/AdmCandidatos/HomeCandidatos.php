@@ -35,18 +35,18 @@ require_once '../../Model/Candidatos/candidados.php';
 
   <div class="container">
     <div class="row">
-        <form class="form-inline" id="formulario">
+        <form action="AddCandidatos.php" method="post" class="form-inline" id="formulario">
             <div class="form-group row">                            
-                <input class="form-control" type="text" placeholder="Nombre" />
-                <input class="form-control" type="text" placeholder="Apellido" />             
-                <input class="form-control" type="text" placeholder="Partido" />  
-                <input class="form-control" type="text" placeholder="Puesto" />  
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre" />
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" />             
+                <input class="form-control" type="text" placeholder="Partido" name="partido" />  
+                <input class="form-control" type="text" placeholder="Puesto" name="puesto" />  
                 <select class="form-control">   
-                    <option value="" style="display: none;">Estado</option>        
-                    <option value=true>Activo</option>        
-                    <option value=false>Inactivo</option>        
+                    <option value="" style="display: none;" name="estado">Estado</option>        
+                    <option value=1>Activo</option>        
+                    <option value=0>Inactivo</option>        
                 </select>           
-                <input class="form-control" type="file" placeholder="Foto" />  
+                <input class="form-control" type="file" placeholder="Foto" name="foto" />  
 
                 <button class="btn btn-success">Guardar Formulario</button>
                 <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>

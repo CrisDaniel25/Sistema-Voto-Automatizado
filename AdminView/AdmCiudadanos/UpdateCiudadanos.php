@@ -6,7 +6,7 @@ require_once '../../Model/Ciudadano/ciudadano.php';
     if ($isContainid) { $ciudadanoid = $_GET['id']; }
 
     if (empty($_POST)) {    
-        echo "<p>Without Post</p>";
+        //echo "<p>Without Post</p>";
         $query = "SELECT * FROM ciudadanos WHERE ciudadanoid={$ciudadanoid}";
         $result = $db->connect()->query($query);
         $data = $result->fetch();
@@ -14,12 +14,12 @@ require_once '../../Model/Ciudadano/ciudadano.php';
     }
 
     if ($_POST && isset($_POST['cedula']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email']) && isset($_POST['estado'])) {
-        echo "<p>Post</p>";
+       // echo "<p>Post</p>";
         $ciudadanos =  new Ciudadano($ciudadanoid,$_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['email'],$_POST['estado']);
         $ciudadanos->estado = $_POST['estado'];
         $query = "UPDATE ciudadanos SET cedula='$ciudadanos->cedula',nombre='$ciudadanos->nombre',apellido='$ciudadanos->apellido',email='$ciudadanos->email',estado='$ciudadanos->estado' WHERE ciudadanoid={$ciudadanoid}";
         $db->connect()->query($query);
-        //header("location: Homeciudadanos.php");
+        header("location: Homeciudadanos.php");
     }
 ?>
 
@@ -56,16 +56,16 @@ require_once '../../Model/Ciudadano/ciudadano.php';
                 <input class="form-control" type="text" placeholder="Email" name="email" value="<?php echo $ciudadanos->email?>" />  
                 <select class="form-control" name="estado">                    
                     <?php if ($data['estado'] == 1) { ?> 
-                            <option select value=true>Activo</option>
+                            <option select value=1>Activo</option>
                     <?php }else { ?>
-                            <option value=true>Activo</option>
+                            <option value=1>Activo</option>
                         
                     <?php } ?>
 
                     <?php if ($data['estado'] == 0) { ?> 
-                            <option select value=false>Inactivo</option>
+                            <option select value=0>Inactivo</option>
                     <?php }else { ?>
-                            <option value=false>Inactivo</option>
+                            <option value=0>Inactivo</option>
                         
                     <?php } ?>
                 </select>           

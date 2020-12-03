@@ -1,23 +1,25 @@
 <?php
-require_once '../../Model/Ciudadano/ciudadano.php';
+require_once '../../Model/Candidatos/candidados.php';
 require_once '../../Data/DataBase.php';
 
     $db = new DB();
     $query = "SELECT * FROM candidatos";
     $result = $db->connect()->query($query);     
     if( $result->rowCount() > 0) { while($row = $result->fetch()) { $lastid = $row['candidatoid']; } }
-    else {
-        $lastid = 0;        
-    }
+    else { $lastid = 0; }
 
         echo "<p>".$lastid."</p>";
         $lastid = $lastid + 1;
         echo "<p>".$lastid."</p>";
 
-    if (isset($_POST['cedula']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email']) && isset($_POST['estado'])) {
-        $ciudadanos =  new Ciudadano($lastid,$_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['email'],$_POST['estado']);
-        $query = "INSERT INTO ciudadanos(ciudadanoid,cedula,nombre,apellido,email,estado)VALUES('$ciudadanos->ciudadanoid','$ciudadanos->cedula','$ciudadanos->nombre','$ciudadanos->apellido','$ciudadanos->email','$ciudadanos->estado')";
+    if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['partido']) && isset($_POST['puesto']) && isset($_POST['estado'])) {
+        $cadidato =  new Candidado($lastid,$_POST['nombre'],$_POST['apellido'],$_POST['partido'],$_POST['puesto'],$_POST['foto'],$_POST['estado']);
+        $a = $_POST['estado'];
+        echo "<p>".$a."</p>";
+        $candidato->estado = $a;
+        echo "<p>".$candidato->estado."</p>";
+        $query = "INSERT INTO candidatos(candidatoid,nombre,apellido,partido,puesto,foto,estado)VALUES('$candidato->candidatoid','$candidato->nombre','$candidato->apellido','$candidato->partido','$candidato->puesto','$candidato->foto',$candidato->estado)";
         $db->connect()->query($query);
+        header("location: HomeCandidatos.php");
     }
-    header("location: Homeciudadanos.php");
 ?>
