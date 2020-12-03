@@ -16,7 +16,8 @@ require_once '../../Model/Ciudadano/ciudadano.php';
     if ($_POST && isset($_POST['cedula']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email']) && isset($_POST['estado'])) {
         echo "<p>Post</p>";
         $ciudadanos =  new Ciudadano($ciudadanoid,$_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['email'],$_POST['estado']);
-        $query = "UPDATE ciudadanos SET cedula='$ciudadanos->cedula',nombre='$ciudadanos->nombre',apellido='$ciudadanos->apellido',email='$ciudadanos->email',estado=$ciudadanos->estado WHERE ciudadanoid={$ciudadanoid}";
+        $ciudadanos->estado = $_POST['estado'];
+        $query = "UPDATE ciudadanos SET cedula='$ciudadanos->cedula',nombre='$ciudadanos->nombre',apellido='$ciudadanos->apellido',email='$ciudadanos->email',estado='$ciudadanos->estado' WHERE ciudadanoid={$ciudadanoid}";
         $db->connect()->query($query);
         //header("location: Homeciudadanos.php");
     }
@@ -47,7 +48,7 @@ require_once '../../Model/Ciudadano/ciudadano.php';
   
   <div class="container">
     <div class="row">
-        <form action="UpdateCiudadanos.php" method="post" class="form-inline">
+        <form action="UpdateCiudadanos.php?id=<?php echo $ciudadanos->ciudadanoid;?>" method="post" class="form-inline">
             <div class="form-group row">
                 <input class="form-control" type="number" placeholder="Cedula" name="cedula" value="<?php echo $ciudadanos->cedula?>" />                            
                 <input class="form-control" type="text" placeholder="Nombre" name="nombre" value="<?php echo $ciudadanos->nombre?>" />
