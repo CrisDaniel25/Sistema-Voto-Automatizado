@@ -1,10 +1,12 @@
 # Sistema-Voto-Automatizado
-
+Credenciales del Aministrador:
+* Correo: admin@gmail.com
+* Clave: 12345
+# Integrantes que colaboraron:
+* Cristopher Figueroa - 2018-6186
+* Verlyn Phlinspy - 2018-6492
 # Objetivo general:
-
 ● Crear un sistema para el voto automatizado de candidatos en una elección utilizando bootstrap para el diseño. 
-
-# Funcionalidades 
 # Funcionalidades del elector:
 
 El sistema debe iniciar en la pantalla para que el elector coloque su documento de identidad, si este ya ha votado en estas elecciones debe mostrarle un mensaje que ya ha ejercido su derecho al voto, en caso de que no haya ninguna votación activa 
@@ -58,7 +60,7 @@ Si no existe ninguna elección activa debe habilitarse una opción para iniciar 
 
 ● Para ver los resultados de elecciones pasada no se toma en consideración si actualmente el partido o puesto electivo o candidato está inactivado debe aparecer en los resultados de esa elecciones si estuvo activo durante el proceso de la misma, al igual el voto de los ciudadanos inactivo que votaron en esa elección deben ser contados. 
 
-● No debe existir ningún “Algoritmo” que beneficie a algún candidato o partido político. 4
+● No debe existir ningún “Algoritmo” que beneficie a algún candidato o partido político.
 
 
 
