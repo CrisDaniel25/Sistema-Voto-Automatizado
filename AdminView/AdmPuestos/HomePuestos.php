@@ -40,8 +40,8 @@
         </ul>
     </nav>
   </header>
-<<<<<<< HEAD
-    <a class="btn btn-dark" href="AddPuestos.php">Agregar</a>
+<div class="container">
+    <a class="btn btn-primary" href="AddPuestos.php">Agregar Nuevo Puesto</a>
     <div class="row">
             <div class="col col-3">
             <div class="card" style="width: 18rem;">
@@ -80,6 +80,6 @@ $(document).ready(function(){
    
     });
     </script>    
-
+</div>
 </body>
 </html>

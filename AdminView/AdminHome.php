@@ -35,7 +35,6 @@ $admin = new Administrador();
           <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
         </ul>
-        <h4>Menu</h4>
     </nav>
   </header>
     <div class="main">
