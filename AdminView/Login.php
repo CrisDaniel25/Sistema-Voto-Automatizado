@@ -44,7 +44,7 @@
                             <input type="text" id="tt" class="form-control" name="correo" placeholder="Correo" required/>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="tt" class="form-control" name="clave" placeholder="Clave" required/>
+                            <input type="password" id="tt" class="form-control" name="clave" placeholder="Clave" required/>
                         </div>
                         <div>
                             <input type="submit" class="btn btn-dark" value="Iniciar Session"/>
