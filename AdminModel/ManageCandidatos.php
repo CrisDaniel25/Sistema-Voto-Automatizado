@@ -1,6 +1,6 @@
 <?php
-    require_once '../Data/DataBase.php';
-    require_once '../Model/Candidatos/candidatos.php';
+    require_once '../../Data/DataBase.php';
+    require_once '../../Model/Candidatos/candidatos.php';
 
     class ManageCandidatos extends DB{
 
@@ -23,12 +23,16 @@
              $stat->bindParam(':estado',$estado);
 
              if($stat->execute()){
-                header('Location: ../AdminView/AddPartidos.php');
+                header('Location: ../../AdminView/AdmCandidatos/HomeCandidatos.php');
            }
 
         }
         function mostrarcandidatos(){
-           
+           $query = "SELECT * FROM candidatos";
+           $stat = $this->connect()->prepare($query);
+           $stat->execute();
+           $result = $stat;
+           return $result;
         }
     }
 

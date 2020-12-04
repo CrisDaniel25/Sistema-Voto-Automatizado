@@ -1,11 +1,15 @@
 <?php
-require_once '../../Data/DataBase.php';
+ require_once '../../Data/DataBase.php';
  require_once '../../Model/Candidatos/candidatos.php';
+ require_once '../../AdminModel/ManageCandidatos.php';
 
-    $db = new DB();
+  /*  $db = new DB();
     
     $query = "SELECT * FROM candidatos";
-    $result = $db->connect()->query($query);
+    $result = $db->connect()->query($query);*/
+
+    $managecandidato = new ManageCandidatos();
+    $result = $managecandidato->mostrarcandidatos();
 ?>
 
 <!DOCTYPE html>
@@ -36,15 +40,27 @@ require_once '../../Data/DataBase.php';
     <div>
         <a href="AddCandidatos.php">Agregar</a>
     </div>
-    <div class="main">
+    
             <div class="row">
                 <div class="col-text-center">
-                    <div class="col-sm-12">
+                    <div class="col-sm-8">
+                        <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
+                            <?php $posted_image = "data:image/jpg;base64,". base64_encode($row['foto']); ?>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="<?php echo  $posted_image; ?>" />
+                        <div class="card-body">
+                            <p class="card-text"><?php echo $row['nombre']?></p>
 
+                        </div>
+                        <a href="#" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
+                        <a href="#" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-trash cl"></li></a>
+                
+                        </div>
+                        <?php endwhile?>
                      </div>
                 </div>
             </div>
-        </div>
+        
 </body>
 </html>
 
