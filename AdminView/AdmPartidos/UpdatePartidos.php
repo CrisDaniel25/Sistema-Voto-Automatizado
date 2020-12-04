@@ -11,6 +11,14 @@ require_once '../../Model/PuestoElectoral/puesto.php';
     $result = $db->connect()->query($query);
     $row = $result->fetch(PDO::FETCH_ASSOC);
     }
+
+    if(isset($_POST['actualiza'])){
+        //Call method update here
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+       // $logo = la forma en que sube la imagen;
+       $estado = $_POST['logo'];
+        }
    
 
 ?>
@@ -66,7 +74,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                            
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-dark" value="Agregar"/>
+                            <input type="submit" class="btn btn-dark" name="actualiza" value="Actualizar"/>
                         <div>
                    
                     </form>
