@@ -61,7 +61,7 @@ Si no existe ninguna elección activa debe habilitarse una opción para iniciar 
 
 ● Para ver los resultados de elecciones pasada no se toma en consideración si actualmente el partido o puesto electivo o candidato está inactivado debe aparecer en los resultados de esa elecciones si estuvo activo durante el proceso de la misma, al igual el voto de los ciudadanos inactivo que votaron en esa elección deben ser contados. 
 
-● No debe existir ningún “Algoritmo” que beneficie a algún candidato o partido político. 4
+● No debe existir ningún “Algoritmo” que beneficie a algún candidato o partido político.
 
 
 
