@@ -1,6 +1,5 @@
 <?php
-require_once '../../Data/DataBase.php';
-require_once '../../Model/PuestoElectoral/puesto.php';
+
 
 
     require_once '../../AdminModel/ManagePuesto.php';
@@ -50,7 +49,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $row['nombre']?></h4>
                     <p class="card-text"><?php echo $row['descripcion']?></p>
-                    <a href="#" ><li class="glyphicon glyphicon-pencil"></li></a>
+                    <a href="#" ><li data-id="<?php echo $row['puestoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
                     <a href="#" ><li data-id="<?php echo $row['puestoid']?>" class="glyphicon glyphicon-trash cl"></li></a>
                 </div>
                 <?php endwhile?>
@@ -66,7 +65,15 @@ $(document).ready(function(){
     e.preventDefault();
 
         let id = $(this).data("id");
-       window.location.href = "EliminarPuestos.php?id=" + id;
+       window.location.href = "DeletePuestos.php?id=" + id;
+
+
+    }); 
+    $(".cll").on("click", function(e){
+    e.preventDefault();
+
+        let id = $(this).data("id");
+       window.location.href = "UpdatePuestos.php?id=" + id;
 
 
     }); 

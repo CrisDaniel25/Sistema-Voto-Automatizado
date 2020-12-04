@@ -1,5 +1,8 @@
 <?php
-require_once '../../Data/DataBase.php';
+
+
+    require '../../Data/DataBase.php';
+
 
     class ManagePuesto extends DB{
         function FilterNombrePuesto(){
@@ -27,13 +30,34 @@ require_once '../../Data/DataBase.php';
                 return $result; 
         }
         function EliminarPuestos($id){
-            $query = "DELETE FROM puesto_electivo WHERE puestoid:id";
-            $stat = $this->connect()->prepare($query);
-            $stat->bindParam(':id',$id);
-            if($stat->execute()){
-                header('Location: ../AdminView/HomePuestos.php');
-            }
+            $query = "DELETE FROM puesto_electivo WHERE puestoid:$id";
+            $this->connect()->query($query);
+           
+           // if($stat->execute()){
+                header('Location: HomePuestos.php');
+           // }
 
+        }
+        function FilterEdit($ID){
+            $query = "SELECT * FROM puesto_electivo WHERE puestoid=:puestoid";
+            $stat = $this->connect()->prepare($query);
+            $stat->bindParam(':puestoid',$ID);
+            $stat->execute();
+            $result = $stat;
+                return $result;
+        }
+        function Actualizar($id,$nombre,$descripcion,$estado){
+            $query = "UPDATE puesto_electivo SET nombre=:nombre, descripcion=:descripcion,estado=:estado WHERE puestoid=$id";
+            $stat = $this->connect()->prepare($query);
+           // $stat->binpParam(':puestoid',$id);
+            $stat->bindParam(':nombre',$nombre);
+            $stat->bindParam(':descripcion',$descripcion);
+            $stat->bindParam(':estado',$estado);
+          
+            if($stat->execute()){
+                header('Location: ../AdmPuestos/HomePuestos.php');
+            }
+            
         }
     }
 

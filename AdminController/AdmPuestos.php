@@ -14,5 +14,15 @@
         $managepuesto->AgregarPuesto($puesto);
 
     }
+    if(isset($_POST['actualizo'])){
+        
+        $puesto = new Puesto();
+        $puesto->nombre = $_POST['nombre'];
+        $puesto->descripcion = $_POST['descripcion'];
+        $puesto->estado = $_POST['estado'];
+        $managepuesto->Actualizar($_GET['id'],$puesto->nombre,$puesto->descripcion,$puesto->estado);
+
+    }
+
 
 ?>

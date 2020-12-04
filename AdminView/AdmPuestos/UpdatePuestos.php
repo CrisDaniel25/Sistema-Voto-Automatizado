@@ -1,7 +1,28 @@
 
 <?php
+        require_once '../../AdminModel/ManagePuesto.php';
+        //require_once '../../Model/PuestoElectoral/puesto.php';
 
+        
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $managepuesto = new ManagePuesto();
+        $result = $managepuesto->FilterEdit($_GET['id']);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+    }
+  
+    $managepuesto = new ManagePuesto();
 
+    if(isset($_POST['actualizo'])){
+        
+     //   $puesto = new Puesto();
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        $estado = $_POST['estado'];
+        $managepuesto->Actualizar(1,$nombre,$descripcion,$estado);
+
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +50,32 @@
         </ul>
     </nav>
   </header>
-
+  <div class="main">
+            <div class="row">
+                <div class="col-text-center">
+                    <div class="col-sm-12">
+                    <form method="POST" action="UpdatePuestos.php">
+                        <div class="form-group">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombre']?>"/>
+                        <div>
+                        <div class="form-group">
+                            <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" value="<?php echo $row['descripcion']?>" />
+                        <div>
+                        <div class="form-group">
+                            <select class="form-control" name="estado" id="exampleFormControlSelect1">
+                          
+                            <option>Estado</option>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                            
+                            </select>
+                           
+                        </div>
+                        <input type="submit" value="Agregar" name="actualizo" class="btn btn-dark"/>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
