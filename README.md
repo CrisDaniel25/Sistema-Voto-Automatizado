@@ -1,13 +1,12 @@
 # Sistema-Voto-Automatizado
-
+Credenciales del Aministrador:
+* Correo: admin@gmail.com
+* Clave: 12345
 # Integrantes que colaboraron:
 * Cristopher Figueroa - 2018-6186
 * Verlyn Phlinspy - 2018-6492
 # Objetivo general:
-
 ● Crear un sistema para el voto automatizado de candidatos en una elección utilizando bootstrap para el diseño. 
-
-# Funcionalidades 
 # Funcionalidades del elector:
 
 El sistema debe iniciar en la pantalla para que el elector coloque su documento de identidad, si este ya ha votado en estas elecciones debe mostrarle un mensaje que ya ha ejercido su derecho al voto, en caso de que no haya ninguna votación activa 
