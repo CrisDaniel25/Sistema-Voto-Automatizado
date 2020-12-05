@@ -55,7 +55,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                     <form method="POST" action="../../AdminController/AdmPartidos.php" enctype="multipart/form-data">
                      
                         <div class="form-group">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value=<?php echo $row['nombre']?> />
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value=<?php echo $row['nombrepa']?> />
                         <div>
                         <div class="form-group">
                             <input type="text" name="descripcion" class="form-control" placeholder="Descripcion"  value=<?php echo $row['descripcion']?> />

@@ -47,7 +47,7 @@
             <div class="card" style="width: 18rem;">
             <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
                 <div class="card-body">
-                    <h4 class="card-title"><?php echo $row['nombre']?></h4>
+                    <h4 class="card-title"><?php echo $row['nombrepu']?></h4>
                     <p class="card-text"><?php echo $row['descripcion']?></p>
                     <a href="#" ><li data-id="<?php echo $row['puestoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
                     <a href="#" ><li data-id="<?php echo $row['puestoid']?>" class="glyphicon glyphicon-trash cl"></li></a>

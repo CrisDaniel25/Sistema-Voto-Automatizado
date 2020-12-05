@@ -46,12 +46,12 @@ function closeNav() {
             <div class="row">
                 <div class="col-text-center">
                     <div class="col-sm-12">
-                    <form method="POST" action="index.php">
+                    <form method="POST" action="View/SeleccionPuesto.php">
                         <div class="form-group">
-                            <input type="text" id="tt" class="form-control" placeholder="Cedula"/>
+                            <input type="text" id="tt" name="cedula" class="form-control" placeholder="Cedula" required/>
                         </div>
                         <div>
-                            <input type="submit" class="btn btn-dark" placeholder="Cedula"/>
+                            <input type="submit" class="btn btn-dark" placeholder="Cedula" value="Acceder"/>
                         </div>
                     </form>
                         </div>

@@ -66,7 +66,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?php echo  $posted_image; ?>" />
                         <div class="card-body">
-                            <p class="card-text"><?php echo $row['nombre']?></p>
+                            <p class="card-text"><?php echo $row['nombrepa']?></p>
                         </div>
                         <a href="#" ><li data-id="<?php echo $row['partidoid']?>" class="glyphicon glyphicon-pencil edt"></li></a>
                     <a href="#" ><li data-id="<?php echo $row['partidoid']?>" class="glyphicon glyphicon-trash del"></li></a>

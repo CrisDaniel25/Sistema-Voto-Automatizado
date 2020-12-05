@@ -54,13 +54,13 @@
                             <select class="form-control" name="partido" id="exampleFormControlSelect1">
                             <?php while($row = $resultpartido->fetch(PDO::FETCH_ASSOC)):?>
 
-                            <option value=<?php echo $row['partidoid']?>><?php echo $row['nombre']?></option>
+                            <option value=<?php echo $row['partidoid']?>><?php echo $row['nombrepa']?></option>
                             <?php endwhile?>
                             </select>
                             <select class="form-control" name="puesto" id="exampleFormControlSelect1">
                             <?php while($row = $resultpuesto->fetch(PDO::FETCH_ASSOC)):?>
 
-                            <option value=<?php echo $row['puestoid']?>><?php echo $row['nombre']?></option>
+                            <option value=<?php echo $row['puestoid']?>><?php echo $row['nombrepu']?></option>
                             <?php endwhile?>
                             </select>
                         </div>
