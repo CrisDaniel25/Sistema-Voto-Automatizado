@@ -11,13 +11,14 @@ require_once '../../Model/PuestoElectoral/puesto.php';
         $result = $db->connect()->query($query);
         $data = $result->fetch();
         $puesto =  new Puesto();
+        $puesto->puestoid = $data['puestoid'];
         $puesto->nombre = $data['nombre']; $puesto->descripcion = $data['descripcion']; $puesto->estado = $data['estado'];
     }
 
     if ($_POST && isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['estado'])) {
         $puesto = new Puesto();
         $puesto->nombre = $_POST['nombre']; $puesto->descripcion = $_POST['descripcion']; $puesto->estado = $_POST['estado'];
-        $query = "UPDATE puesto SET nombre='$puesto->nombre',descripcion='$puesto->descripcion',estado='$puesto->estado' WHERE puestoid={$puestoid}";
+        $query = "UPDATE puesto_electivo SET nombre='$puesto->nombre',descripcion='$puesto->descripcion',estado='$puesto->estado' WHERE puestoid={$puestoid}";
         $db->connect()->query($query);
         header("location: HomePuestos.php");
     }
