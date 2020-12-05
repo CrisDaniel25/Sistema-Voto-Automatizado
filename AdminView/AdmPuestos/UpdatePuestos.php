@@ -1,28 +1,26 @@
-
 <?php
-        require_once '../../AdminModel/ManagePuesto.php';
-        //require_once '../../Model/PuestoElectoral/puesto.php';
+require_once '../../Data/DataBase.php';
+require_once '../../Model/PuestoElectoral/puesto.php';
 
-        
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-        $managepuesto = new ManagePuesto();
-        $result = $managepuesto->FilterEdit($_GET['id']);
-        $row = $result->fetch(PDO::FETCH_ASSOC);
+    $db = new DB();
+    $isContainid = isset($_GET['id']);
+    if ($isContainid) { $puestoid = $_GET['id']; }
+
+    if (empty($_POST)) { 
+        $query = "SELECT * FROM puesto_electivo WHERE puestoid={$puestoid}";
+        $result = $db->connect()->query($query);
+        $data = $result->fetch();
+        $puesto =  new Puesto();
+        $puesto->nombre = $data['nombre']; $puesto->descripcion = $data['descripcion']; $puesto->estado = $data['estado'];
     }
-  
-    $managepuesto = new ManagePuesto();
 
-    if(isset($_POST['actualizo'])){
-        
-     //   $puesto = new Puesto();
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $estado = $_POST['estado'];
-        $managepuesto->Actualizar(1,$nombre,$descripcion,$estado);
-
+    if ($_POST && isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_POST['estado'])) {
+        $puesto = new Puesto();
+        $puesto->nombre = $_POST['nombre']; $puesto->descripcion = $_POST['descripcion']; $puesto->estado = $_POST['estado'];
+        $query = "UPDATE puesto SET nombre='$puesto->nombre',descripcion='$puesto->descripcion',estado='$puesto->estado' WHERE puestoid={$puestoid}";
+        $db->connect()->query($query);
+        header("location: HomePuestos.php");
     }
-    
 ?>
 
 <!DOCTYPE html>
@@ -31,51 +29,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Voto Automatizado</title>
-    <link rel="stylesheet" href="../../css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../../Design/design.css"/>
-        <link rel="stylesheet" href="../../css/Style.css"/>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../css/bootstrap-theme.min.css"/> 
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/> 
+    <link rel="stylesheet" href="../../Design/design.css"/>
 </head>
 <body>
 <header>
     <nav class="navbar navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
-          <a href="../AdminHome.php" class="btn btn-danger"><span>Volver</span></a>
+          <a href="HomePuestos.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
         </ul>
     </nav>
   </header>
-  <div class="main">
-            <div class="row">
-                <div class="col-text-center">
-                    <div class="col-sm-12">
-                    <form method="POST" action="UpdatePuestos.php">
-                        <div class="form-group">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombre']?>"/>
-                        <div>
-                        <div class="form-group">
-                            <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" value="<?php echo $row['descripcion']?>" />
-                        <div>
-                        <div class="form-group">
-                            <select class="form-control" name="estado" id="exampleFormControlSelect1">
-                          
-                            <option>Estado</option>
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                            
-                            </select>
-                           
-                        </div>
-                        <input type="submit" value="Agregar" name="actualizo" class="btn btn-dark"/>
-                    </form>
-                    </div>
-                </div>
+  
+  <div class="container">
+    <div class="row">
+        <form action="UpdatePuestos.php?id=<?php echo $puesto->puestoid;?>" method="post" class="form-inline">
+            <div class="form-group row">                           
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre" value="<?php echo $puesto->nombre?>" />
+                <input class="form-control" type="text" placeholder="Descripcion" name="descripcion" value="<?php echo $puesto->descripcion?>" /> 
+                <select class="form-control" name="estado">                    
+                    <?php if ($data['estado'] == 1) { ?> 
+                            <option select value=1>Activo</option>
+                    <?php }else { ?>
+                            <option value=1>Activo</option>
+                        
+                    <?php } ?>
+
+                    <?php if ($data['estado'] == 0) { ?> 
+                            <option select value=0>Inactivo</option>
+                    <?php }else { ?>
+                            <option value=0>Inactivo</option>
+                        
+                    <?php } ?>
+                </select>           
+
+                <button class="btn btn-success">Guardar Formulario</button>
+                <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>
             </div>
-        </div>
+        </form>
+    </div>
+    </div>
 </body>
 </html>

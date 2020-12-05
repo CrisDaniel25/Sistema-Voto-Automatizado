@@ -5,7 +5,7 @@
 
     $managecandidato = new ManageCandidatos();
     $result = $managecandidato->mostrarcandidatos();
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +33,10 @@
   </header>
 
     <div>
-        <a href="AddCandidatos.php">Agregar</a>
+        <a class="btn btn-primary" href="AddCandidatos.php">Agregar Nuevo Candidato</a>
     </div>
     
             <div class="row">
-                <div class="col-text-center">
                     <div class="col-sm-8">
                         <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
                             <?php $posted_image = "data:image/jpg;base64,". base64_encode($row['foto']); ?>
@@ -53,7 +52,7 @@
                         </div>
                         <?php endwhile?>
                      </div>
-                </div>
+
             </div>
 </body>
 </html>

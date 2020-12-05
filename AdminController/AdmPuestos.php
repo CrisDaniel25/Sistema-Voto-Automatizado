@@ -11,7 +11,7 @@
         $puesto->nombre = $_POST['nombre'];
         $puesto->descripcion = $_POST['descripcion'];
         $puesto->estado = $_POST['estado'];
-        $managepuesto->AgregarPuesto($puesto);
+        // $managepuesto->AgregarPuesto($puesto);
 
     }
     if(isset($_POST['actualizo'])){
@@ -20,7 +20,7 @@
         $puesto->nombre = $_POST['nombre'];
         $puesto->descripcion = $_POST['descripcion'];
         $puesto->estado = $_POST['estado'];
-        $managepuesto->Actualizar($_GET['id'],$puesto->nombre,$puesto->descripcion,$puesto->estado);
+        // $managepuesto->Actualizar($_GET['id'],$puesto->nombre,$puesto->descripcion,$puesto->estado);
 
     }
 
