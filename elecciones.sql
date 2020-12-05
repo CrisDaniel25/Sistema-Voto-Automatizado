@@ -40,7 +40,8 @@ CREATE TABLE `administrador` (
 --
 -- Volcado de datos para la tabla `administrador`
 --
-
+INSERT INTO `administrador` (`adminid`, `correo`, `clave`) VALUES
+(0, 'admin@gmail.com', '12345');
 INSERT INTO `administrador` (`adminid`, `correo`, `clave`) VALUES
 (1, 'verlyn@gmail.com', 'clave');
 

@@ -3,14 +3,9 @@
  require_once '../../Model/Candidatos/candidatos.php';
  require_once '../../AdminModel/ManageCandidatos.php';
 
-  /*  $db = new DB();
-    
-    $query = "SELECT * FROM candidatos";
-    $result = $db->connect()->query($query);*/
-
     $managecandidato = new ManageCandidatos();
     $result = $managecandidato->mostrarcandidatos();
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +60,6 @@
                      </div>
                 </div>
             </div>
-        
 </body>
 </html>
 

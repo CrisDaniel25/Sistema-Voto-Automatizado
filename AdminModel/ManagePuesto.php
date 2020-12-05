@@ -3,6 +3,7 @@
 
     require '../../Data/DataBase.php';
 
+
     class ManagePuesto extends DB{
         function FilterNombrePuesto(){
             $query = "SELECT puestoid, nombrepu FROM puesto_electivo";
