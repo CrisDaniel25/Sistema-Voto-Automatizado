@@ -9,16 +9,6 @@
 
     if(isset($_POST['nombre']) && isset($_POST['apellido'])){
 
-
-
-        
-
-
-
-
-
-
-
      //   $managecandidato = new ManageCandidatos();
         $candidato = new Candidatos();
         $candidato->nombre = $_POST['nombre'];
@@ -33,7 +23,7 @@
         $query = "INSERT INTO candidatos(nombre, apellido,partidoid,puestoid,foto,estado)
         VALUES ('$candidato->nombre','$candidato->apellido','$candidato->partido','$candidato->puesto','$candidato->foto','$candidato->estado')";
         $stat = $db->connect()->query($query);
-        header('Location: ../AdminView/AdmCandidatos/AddCandidatos.php');
+        header('Location: ../AdminView/AdmCandidatos/HomeCandidatos.php');
 
        
     }

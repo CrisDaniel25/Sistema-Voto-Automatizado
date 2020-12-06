@@ -4,7 +4,7 @@
     $db = new DB();
 
     $query = "SELECT * FROM puesto_electivo";
-    $result1 = $db->connect()->query($query);
+    $resultpuesto = $db->connect()->query($query);
     $query = "SELECT * FROM partidos";
     $resultpartido = $db->connect()->query($query);
 ?>
@@ -36,7 +36,7 @@
   </header>
   <div class="container">
     <div class="row">
-        <form action="AddPuestos.php" method="post" class="form-inline" enctype="multipart/form-data">
+        <form action="../../AdminController/AdmCandidatos.php" method="post" class="form-inline" enctype="multipart/form-data">
             <div class="form-group row">                         
                 <input class="form-control" type="text" placeholder="Nombre" name="nombre" />
                 <input class="form-control" type="text" placeholder="Apellido" name="apellido" /> 
@@ -44,8 +44,19 @@
                 <option value="" style="display: none;">Partido</option>
                 <?php while($row = $resultpartido->fetch()) { ?>
                 <option value=<?php echo $row['partidoid']?>><?php echo $row['nombre']?></option>
-                <?php }?> 
+                <?php 
+                    }
+                ?> 
                 </select>
+                <select class="form-control" name="puesto">
+                <option value="" style="display: none;">Puesto</option>
+                <?php while($row = $resultpuesto->fetch()) { ?>
+                <option value=<?php echo $row['puestoid']?>><?php echo $row['nombre']?></option>
+                <?php 
+                    }
+                ?> 
+                </select>
+                <input class="form-control" type="file" name="foto" />
                 <select class="form-control" name="estado">   
                     <option value="" style="display: none;">Estado</option>        
                     <option value=1>Activo</option>        
@@ -57,46 +68,5 @@
             </div>
         </form>
     </div>
-                    <!-- <form method="POST" action="../../AdminController/AdmCandidatos.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre"/>
-                        <div>
-                        <div class="form-group">
-                            <input type="text" name="apellido" class="form-control" placeholder="Apellido"/>
-                        <div> -->
-                        <!-- <div class="form-group">
-                            <select class="form-control" name="partido" id="exampleFormControlSelect1">
-                            <?php while($row = $resultpartido->fetch(PDO::FETCH_ASSOC)):?>
-
-                            <option value=<?php echo $row['partidoid']?>><?php echo $row['nombre']?></option>
-                            <?php endwhile?>
-                            </select>
-                            <select class="form-control" name="puesto" id="exampleFormControlSelect1">
-                            <?php while($row = $resultpuesto->fetch(PDO::FETCH_ASSOC)):?>
-
-                            <option value=<?php echo $row['puestoid']?>><?php echo $row['nombre']?></option>
-                            <?php endwhile?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" name="estado" id="exampleFormControlSelect1">
-                           
-                            <option>Estado</option>
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                            </select>
-                           
-                        </div>
-                        <div class="form-group">
-                            <input type="file" name="foto" class="form-control"/>
-                        <div>
-                            <input type="submit" class="btn btn-dark" value="Agregar"/> -->
-                        
-                        
-                    <!-- </form>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 </body>
 </html>
