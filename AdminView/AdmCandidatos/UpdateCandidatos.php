@@ -1,6 +1,6 @@
 
 <?php
-    require_once '../Data/DataBase.php';
+    require_once '../../Data/DataBase.php';
 
     $db = new DB();
     if(isset($_GET['id'])){
