@@ -43,7 +43,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
     </nav>
   </header>
     <div>
-        <a class="btn btn-primary" href="AddPartidos.php">Agregar Nuevo Candidato</a>
+        <a class="btn btn-primary" href="AddPartidos.php">Agregar Nuevo Partido</a>
     </div>
     
             <div class="row">
@@ -55,8 +55,13 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                         <div class="card-body">
                             <a class="card-text"><?php echo $row['nombre']?></a>
                             <a class="card-text"><?php echo $row['descripcion']?></a> <a>-</a>
-                            <a class="card-text"><?php echo $row['estado']?></a>
-
+                            <?php
+                                if ($row['estado'] == 1) {
+                                    echo "<a>Activo</a>";
+                                }else {
+                                    echo "<a>Inactivo</a>";
+                                }
+                            ?>
                         </div>
                         <a href="UpdatePartidos.php?id=<?php echo $row['partidoid'];?>"  class="btn btn-warning">
                         <svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pencil-square' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
@@ -72,33 +77,6 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                         </div>
                         <?php endwhile?>
                      </div>
-
             </div>
-
-
-            
-    <script>
-
-$(document).ready(function(){
-
-    $(".del").on("click", function(e){
-    e.preventDefault();
-
-        let id = $(this).data("id");
-       window.location.href = "DeletePuestos.php?id=" + id;
-
-
-    }); 
-    $(".edt").on("click", function(e){
-    e.preventDefault();
-
-        let id = $(this).data("id");
-       window.location.href = "UpdatePartidos.php?id=" + id;
-
-
-    }); 
-   
-    });
-    </script>  
 </body>
 </html>

@@ -3,22 +3,22 @@ require_once '../../Data/DataBase.php';
 require_once '../../Model/PuestoElectoral/puesto.php';
 
     $db = new DB(); 
-    $id = $_GET['id'];
-    if(isset($_GET['id'])){
-       
-    $query = "SELECT * FROM partidos WHERE partidoid=$id";
-    $result = $db->connect()->query($query);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
+    if(isset($_GET['id'])){ $id = $_GET['id']; }
+
+    if (empty($_POST)) {
+        $query = "SELECT * FROM partidos WHERE partidoid=$id";
+        $result = $db->connect()->query($query);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['logo']));
     }
 
-    if(isset($_POST['actualiza'])){
-        //Call method update here
+    if($_POST && isset($_POST['nombre'])){
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $logo =  addslashes(file_get_contents($_FILES['logo']['tmp_name']));
         $estado = $_POST['estado'];
-        $query2 = "UPDATE partidos SET nombrepa='$nombre', descripcion='$descripcion',estado='$estado', logo='$logo' WHERE partidoid=1";
-       $db->connect()->query($query2);
+        $query2 = "UPDATE partidos SET nombre='$nombre', descripcion='$descripcion',estado='$estado', logo='$logo' WHERE partidoid=$id";
+        $db->connect()->query($query2);
         header('Location: HomePartidos.php');
         }
    
@@ -53,10 +53,10 @@ require_once '../../Model/PuestoElectoral/puesto.php';
     </nav>
   </header>
 
-            <div class="container">
+        <div class="container">
             <div class="row">
             <div class="form-group row">
-                    <form method="POST" action="UpdatePartidos.php" enctype="multipart/form-data" class="form-inline">
+                    <form method="POST" action="UpdatePartidos.php?id=<?php echo $id;?>" enctype="multipart/form-data" class="form-inline">
                      
                     
                             <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombre']?>" />
@@ -83,7 +83,16 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                     </form>
                     </div>
                 </div>
+            </div>
+        <div class="main">
+        <div class="row">
+            <div class="col-text-center">
+                <div class="col-sm-12">
+                    <img width="80px" height="80px" src="<?php echo  $posted_image; ?>" />
                 </div>
-
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

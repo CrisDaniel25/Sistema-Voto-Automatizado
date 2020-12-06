@@ -6,20 +6,33 @@
     $db = new DB();
     $candidatos = new Candidatos();
     if(isset($_GET['id'])){ $candidatos->candidatoid = $_GET['id']; }
-    $query = "SELECT * FROM candidatos WHERE candidatoid=$candidatos->candidatoid";
-    $result = $db->connect()->query($query);
-    $data = $result->fetch();
-    $candidatos->puesto = $data['puestoid'];
-    $candidatos->partido = $data['partidoid'];
-    $query = "SELECT * FROM puesto_electivo WHERE puestoid=$candidatos->puesto";
-    $resultpuesto = $db->connect()->query($query);
-    $puesto = $resultpuesto->fetch();
-    $query = "SELECT * FROM partidos WHERE partidoid=$candidatos->partido";
-    $resultpartido = $db->connect()->query($query);
-    $partido = $resultpartido->fetch();
+    
+    if (empty($_POST)) { 
+        $query = "SELECT * FROM candidatos WHERE candidatoid=$candidatos->candidatoid";
+        $result = $db->connect()->query($query);
+        $data = $result->fetch();
+        $candidatos->puesto = $data['puestoid'];
+        $candidatos->partido = $data['partidoid'];
+        $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($data['foto']));
+        $query = "SELECT * FROM puesto_electivo WHERE puestoid=$candidatos->puesto";
+        $resultpuesto = $db->connect()->query($query);
+        $puesto = $resultpuesto->fetch();
+        $query = "SELECT * FROM partidos WHERE partidoid=$candidatos->partido";
+        $resultpartido = $db->connect()->query($query);
+        $partido = $resultpartido->fetch();
+    }
 
-    if ($_POST && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['estado'])) {
-
+    if ($_POST && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['estado']) && !empty($_FILES['foto'])) {
+        $candidato = new Candidatos();
+        $candidato->nombre = $_POST['nombre'];
+        $candidato->apellido = $_POST['apellido'];
+        $candidato->partido = $_POST['partido'];
+        $candidato->puesto = $_POST['puesto'];
+        $candidato->foto = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
+        $candidato->estado = $_POST['estado'];
+        $query = "UPDATE candidatos SET nombre='$candidato->nombre',apellido='$candidato->apellido',partidoid='$candidato->partido',puestoid='$candidato->puesto',foto='$candidato->foto',estado='$candidato->estado' WHERE candidatoid={$candidatos->candidatoid}";
+        $stat = $db->connect()->query($query);
+        header('location: HomeCandidatos.php');
     }
 ?>
 
@@ -94,6 +107,15 @@
                 <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>
             </div>
         </form>
+    </div>
+    <div class="main">
+        <div class="row">
+            <div class="col-text-center">
+                <div class="col-sm-12">
+                    <img width="80px" height="80px" src="<?php echo  $posted_image; ?>" />
+                </div>
+            </div>
+        </div>
     </div>
  </div>
 </body>

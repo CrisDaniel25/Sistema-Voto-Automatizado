@@ -67,9 +67,9 @@ require_once '../../Model/Elecciones/elecciones.php';
         echo "<tr>";
         echo "<td>".$row['nombre'] . "</td>";
         if ($row['estado'] == 1) {
-            echo "<td>Activo<td>";
+            echo "<td>Activo</td>";
         }else {
-            echo "<td>Inactivo<td>";
+            echo "<td>Inactivo</td>";
         }
         echo "<td>".$row['fecha'] . "</td>";
         echo "<td><a href='DeleteElecciones.php?id=".$row['eleccionesid']."' class='btn btn-danger'>

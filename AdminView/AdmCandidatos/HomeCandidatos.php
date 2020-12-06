@@ -1,8 +1,11 @@
 <?php
  require_once '../../Data/DataBase.php';
+ require_once 'Information.php';
  require_once '../../Model/Candidatos/candidatos.php';
  require_once '../../AdminModel/ManageCandidatos.php';
 
+    $db = new DB();
+    $get = new Information();
     $managecandidato = new ManageCandidatos();
     $result = $managecandidato->mostrarcandidatos();
 ?>
@@ -40,7 +43,8 @@
     <div>
         <a class="btn btn-primary" href="AddCandidatos.php">Agregar Nuevo Candidato</a>
     </div>
-
+        <div class="row">
+                    <div class="col-sm-8">
                         <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
                             <?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
                     <div class="card" style="width: 18rem;">
@@ -48,9 +52,15 @@
                         <div class="card-body">
                             <a class="card-text"><?php echo $row['nombre']?></a> <a>-</a>
                             <a class="card-text"><?php echo $row['apellido']?></a> <a>-</a>
-                            <a class="card-text"><?php echo $row['partidoid']?></a> <a>-</a>
-                            <a class="card-text"><?php echo $row['puestoid']?></a> <a>-</a>
-                            <a class="card-text"><?php echo $row['estado']?></a>
+                            <a class="card-text"><?php echo $get->GetPartido($row['partidoid']);?></a> <a>-</a>
+                            <a class="card-text"><?php echo $get->GetPuesto($row['puestoid']);?></a> <a>-</a>
+                            <?php
+                                if ($row['estado'] == 1) {
+                                    echo "<a>Activo</a>";
+                                }else {
+                                    echo "<a>Inactivo</a>";
+                                }
+                            ?>
                         </div>
                         <a href="UpdateCandidatos.php?id=<?php echo $row['candidatoid'];?>"  class="btn btn-warning">
                         <svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pencil-square' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
@@ -65,9 +75,8 @@
                         </a>
                         </div>
                         <?php endwhile?>
-                     </div>
-
-        
+                    </div>
+</div>
 </body>
 </html>
 

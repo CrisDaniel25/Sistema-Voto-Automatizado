@@ -1,10 +1,3 @@
-<?php
-    require_once '../../Data/DataBase.php';
-
-    $db = new DB();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +25,11 @@
   </header>
   <div class="container">
     <div class="row">
-        <form action="../../AdminController/AdmCandidatos.php" method="post" class="form-inline" enctype="multipart/form-data">
+        <form action="../../AdminController/AdmPartidos.php" method="post" class="form-inline" enctype="multipart/form-data">
             <div class="form-group row">                         
                 <input class="form-control" type="text" placeholder="Nombre" name="nombre" />
                 <input class="form-control" type="text" placeholder="Descripcion" name="descripcion" /> 
-                <input class="form-control" type="file" name="foto" />
+                <input class="form-control" type="file" name="logo" />
                 <select class="form-control" name="estado">   
                     <option value="" style="display: none;">Estado</option>        
                     <option value=1>Activo</option>        
