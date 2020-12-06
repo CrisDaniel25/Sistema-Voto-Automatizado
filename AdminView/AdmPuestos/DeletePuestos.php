@@ -6,7 +6,7 @@ require_once '../../Data/DataBase.php';
 
     if ($isContainid) { $puestoid = $_GET['id']; }
     echo "<p>".$puestoid."</p>";
-    $query = "DELETE FROM puesto_electivo WHERE puestoid={$puestoid}";
+    $query = "DELETE FROM puesto_electivo WHERE puestoid= 1";
     $db->connect()->query($query);
     header("location: HomePuestos.php");
 ?>

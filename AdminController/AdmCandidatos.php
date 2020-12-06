@@ -8,6 +8,17 @@
     $db = new DB();
 
     if(isset($_POST['nombre']) && isset($_POST['apellido'])){
+
+
+
+        
+
+
+
+
+
+
+
      //   $managecandidato = new ManageCandidatos();
         $candidato = new Candidatos();
         $candidato->nombre = $_POST['nombre'];

@@ -50,9 +50,9 @@
                 <div class="col-text-center">
                     <div class="col-sm-8">
                         <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
-                            <?php $posted_image = "data:image/jpg;base64,". base64_encode($row['foto']); ?>
+                            <?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?php echo  $posted_image; ?>" />
+                        <img width="80px" height="80px" class="card-img-top" src="<?php echo  $posted_image; ?>" />
                         <div class="card-body">
                             <p class="card-text"><?php echo $row['nombre']?></p>
 
