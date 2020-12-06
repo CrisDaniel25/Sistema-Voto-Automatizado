@@ -11,9 +11,6 @@ class Candidatos{
     public $puesto;
     public $foto;
     public $estado;
-
-  
-
 }
 
 ?>

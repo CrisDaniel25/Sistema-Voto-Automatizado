@@ -51,8 +51,11 @@
                     <div class="card" style="width: 18rem;">
                         <img width="80px" height="80px" class="card-img-top" src="<?php echo  $posted_image; ?>" />
                         <div class="card-body">
-                            <p class="card-text"><?php echo $row['nombre']?></p>
-
+                            <a class="card-text"><?php echo $row['nombre']?></a> <a>-</a>
+                            <a class="card-text"><?php echo $row['apellido']?></a> <a>-</a>
+                            <a class="card-text"><?php echo $row['partidoid']?></a> <a>-</a>
+                            <a class="card-text"><?php echo $row['puestoid']?></a> <a>-</a>
+                            <a class="card-text"><?php echo $row['estado']?></a>
                         </div>
                         <a href="UpdateCandidatos.php?id=<?php echo $row['candidatoid'];?>"  class="btn btn-warning">
                         <svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-pencil-square' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>

@@ -1,6 +1,4 @@
-
 <?php
-
 require_once '../../Data/DataBase.php';
 require_once '../../Model/PuestoElectoral/puesto.php';
 
@@ -47,46 +45,45 @@ require_once '../../Model/PuestoElectoral/puesto.php';
 <header>
     <nav class="navbar navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
-          <a href="../AdminHome.php" class="btn btn-danger"><span>Volver</span></a>
+          <a href="HomePartidos.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
         </ul>
     </nav>
   </header>
-  <div class="main">
+
+            <div class="container">
             <div class="row">
-                <div class="col-text-center">
-                    <div class="col-sm-12">
-                    <form method="POST" action="UpdatePartidos.php" enctype="multipart/form-data">
+            <div class="form-group row">
+                    <form method="POST" action="UpdatePartidos.php" enctype="multipart/form-data" class="form-inline">
                      
-                        <div class="form-group">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombrepa']?>" />
-                        <div>
-                        <div class="form-group">
+                    
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombre']?>" />
+
                             <input type="text" name="descripcion" class="form-control" placeholder="Descripcion"  value="<?php echo $row['descripcion']?>" />
-                        <div>
-                                          
-                        <div class="form-group">
+
                             <input type="file" name="logo" class="form-control"/>
-                        <div>
-                        <div class="form-group">
-                            <select class="form-control" name="estado" id="exampleFormControlSelect1">
                            
-                            <option>Estado</option>
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                            </select>
-                           
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-dark" name="actualiza" value="Actualizar"/>
-                        <div>
-                   
+                            <select class="form-control" name="estado">                    
+                                <?php if ($data['estado'] == 1) { ?> 
+                                <option select value=1>Activo</option>
+                                <?php }else { ?>
+                                <option value=1>Activo</option>
+                                <?php } ?>
+                                <?php if ($data['estado'] == 0) { ?> 
+                                <option select value=0>Inactivo</option>
+                                <?php }else { ?>
+                                <option value=0>Inactivo</option>
+                                <?php } ?>
+                                </select>
+
+                                <button type="submit" class="btn btn-success">Guardar Formulario</button>
+                                <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>
                     </form>
                     </div>
                 </div>
-            </div>
-        </div>
+                </div>
+
 </body>
 </html>

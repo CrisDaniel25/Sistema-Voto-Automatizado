@@ -5,7 +5,6 @@ require_once '../../Data/DataBase.php';
     $isContainid = isset($_GET['id']);
 
     if ($isContainid) { $candidatoid = $_GET['id']; }
-    echo "<p>".$candidatoid."</p>";
     $query = "DELETE FROM candidatos WHERE candidatoid={$candidatoid}";
     $db->connect()->query($query);
     header("location: HomeCandidatos.php");
