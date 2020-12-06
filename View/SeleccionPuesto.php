@@ -1,9 +1,13 @@
 
 <?php
 
+session_start();
     if(!empty($_POST['cedula'])){
-
+       // $_SESSION['adminid'] = $_POST['cedula'];
     }
+  //  if(!isset($_SESSION['adminid'])){
+      //  header('Location: ../AdminView/AdminHome.php');
+    //}
 
 ?>
 

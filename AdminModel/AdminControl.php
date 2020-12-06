@@ -3,6 +3,7 @@
 require_once '../Data/DataBase.php';
 require_once 'admin.php';
 
+session_start();
 class AdminControl extends DB{
 
     function Login($correo,$clave){
@@ -17,6 +18,7 @@ class AdminControl extends DB{
         if(count($result) > 0  && $admin->clave == $result['clave']){
             $_SESSION['adminid'] = $result['id'];
             header('Location: ../AdminView/AdminHome.php');
+            
         }
         else{
             header('Location: ../AdminView/Login.php');

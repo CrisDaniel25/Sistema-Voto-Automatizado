@@ -17,7 +17,7 @@ require_once '../Model/Elector.php';
         INNER JOIN usuario U ON C.id = U.id" ; */
         
           
-        $query2 = "SELECT C.puestoid,C.foto,C.partidoid,C.candidatoid,PA.nombrepa,C.apellido, PU.puestoid,PU.nombrepu, 
+        $query2 = "SELECT C.puestoid,C.foto,C.estado,C.partidoid,C.candidatoid,PA.nombrepa,C.apellido, PU.puestoid,PU.nombrepu, 
         PA.partidoid,C.nombre FROM candidatos C
         INNER JOIN puesto_electivo PU ON C.puestoid = PU.puestoid
         INNER JOIN partidos PA ON C.partidoid= PA.partidoid";
@@ -84,7 +84,7 @@ body{
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
-          <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
+          <a href="SeleccionPuesto.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
         </ul>
     </nav>
@@ -94,29 +94,24 @@ body{
         <div class="col col-sm-10">
 
               <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">Puesto Electoral</div>
+               
                 <img class="card-img-top" src="../Design/votonull.jpg"  alt="Card image cap">
                     <div class="card-body">
                     <h5 class="card-title">VOTO NULLO, ESTE VOTO NO CONTARA PARA NINGUN CANDIDATO</h5>
                    
                     </div>
                 <div class="card-footer bg-transparent border-light">
-                    <center><a href="SeleccionPresidente.php?id=<?php echo $row['candidatoid']?>" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
+                    <center><a href="SeleccionPuesto.php" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
                 </div>
              </div>
 
             <?php if($result2->rowCount() > 0):?>
                 <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)):?>
                     <?php if($row['nombrepu'] == 'Presidente'):?>
-
-
-
-
+                     <?php if($row['estado'] == 1):?>
                         <?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
-
             <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">Puesto Electoral</div>
-                <img class="card-img-top" src="<?php echo  $posted_image; ?>"  alt="Card image cap">
+                 <img class="card-img-top" src="<?php echo  $posted_image; ?>"  alt="Card image cap">
                     <div class="card-body">
                     <h5 class="card-title"><?php echo "Candidato: " . $row['nombre'] . " " . $row['apellido']?></h5>
                     <p class="card-text"><?php echo "Puesto: " . $row['nombrepu']?></p>
@@ -126,12 +121,7 @@ body{
                     <center><a href="SeleccionPresidente.php?id=<?php echo $row['candidatoid']?>" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
                 </div>
             </div>
-
-
-
-
-          
-
+                     <?php endif;?>
                     <?php endif;?>
                 <?php endwhile;?>
             <?php endif;?>

@@ -32,7 +32,8 @@ $admin = new Administrador();
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
-          <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
+          <a href="../index.php" class="btn btn-success"><span>Volver</span></a>
+          <a href="logout.php" class="btn btn-danger"><span>Logout</span></a>
          </li>
         </ul>
     </nav>
