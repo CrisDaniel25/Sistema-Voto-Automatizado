@@ -1,6 +1,6 @@
 <?php
     require_once '../../Data/DataBase.php';
-    require_once '../../Model/Candidatos/candidatos.php';
+   // require_once '../../Model/Candidatos/candidatos.php';
 
     class ManageCandidatos extends DB{
 

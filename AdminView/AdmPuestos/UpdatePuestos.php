@@ -71,6 +71,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
 
                 <button class="btn btn-success">Guardar Formulario</button>
                 <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>
+
             </div>
         </form>
     </div>

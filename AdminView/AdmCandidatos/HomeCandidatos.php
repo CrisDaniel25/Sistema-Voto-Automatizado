@@ -3,6 +3,11 @@
  require_once '../../Model/Candidatos/candidatos.php';
  require_once '../../AdminModel/ManageCandidatos.php';
 
+  /*  $db = new DB();
+    
+    $query = "SELECT * FROM candidatos";
+    $result = $db->connect()->query($query);*/
+
     $managecandidato = new ManageCandidatos();
     $result = $managecandidato->mostrarcandidatos();
 ?>
@@ -19,6 +24,11 @@
         <script src="../../js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            body{
+                color:#000000;
+            }
+        </style>
 </head>
 <body>
 <header>
@@ -39,14 +49,14 @@
             <div class="row">
                     <div class="col-sm-8">
                         <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
-                            <?php $posted_image = "data:image/jpg;base64,". base64_encode($row['foto']); ?>
+                            <?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="<?php echo  $posted_image; ?>" />
+                        <img width="80px" height="80px" class="card-img-top" src="<?php echo  $posted_image; ?>" />
                         <div class="card-body">
                             <p class="card-text"><?php echo $row['nombre']?></p>
 
                         </div>
-                        <a href="#" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
+                        <a href="UpdateCandidatos.php?id=<?php echo $row['candidatoid']?>" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
                         <a href="#" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-trash cl"></li></a>
                 
                         </div>
@@ -54,6 +64,7 @@
                      </div>
 
             </div>
+        
 </body>
 </html>
 
