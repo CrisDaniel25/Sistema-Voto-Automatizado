@@ -5,8 +5,6 @@
         public $nombre;
         public $descripcion;
         public $estado;
-
-       
     }
 
 ?>
