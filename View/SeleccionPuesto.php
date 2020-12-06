@@ -44,6 +44,16 @@
    </style>
 </head>
 <body>
+<header>
+    <nav class="navbar navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto" style="list-style-type: none">
+         <li class="nav-item active">
+          <a href="../index.php" class="btn btn-danger"><span>Volver</span></a>
+         </li>
+        </ul>
+    </nav>
+  </header>
     <div class="center">
         <div class="row">
             <div class="col col-sm-10">
