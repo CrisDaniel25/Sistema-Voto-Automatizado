@@ -1,10 +1,11 @@
 <?php
-require_once '../Data/DataBase.php';
+require_once '../../Data/DataBase.php';
 
+  
 
     class ManagePartido extends DB{
         function FilterNombrePartido(){
-            $query = "SELECT partidoid, nombre FROM partidos";
+            $query = "SELECT partidoid, nombrepa FROM partidos";
             $stat = $this->connect()->prepare($query);
             $stat->execute();
             $result = $stat;
@@ -14,7 +15,7 @@ require_once '../Data/DataBase.php';
 
         function agregar($nombre,$descripcion,$logo,$estado){
             
-            $query = "INSERT INTO partidos (nombre, descripcion,logo,estado)
+            $query = "INSERT INTO partidos (nombrepa, descripcion,logo,estado)
              VALUES (:nombre, :descripcion, :logo, :estado)";
              $stat = $this->connect()->prepare($query);
              $stat->bindParam(':nombre',$nombre);
@@ -28,7 +29,7 @@ require_once '../Data/DataBase.php';
             
         } 
         function Actualizar($id,$nombre,$descripcion,$estado,$logo){
-            $query = "UPDATE partidos SET nombre=:nombre, descripcion=:descripcion,estado=:estado, logo=:logo WHERE partido=$id";
+            $query = "UPDATE partidos SET nombrepa=:nombre, descripcion=:descripcion,estado=:estado, logo=:logo WHERE partido=$id";
             $stat = $this->connect()->prepare($query);
            // $stat->binpParam(':puestoid',$id);
             $stat->bindParam(':nombre',$nombre);

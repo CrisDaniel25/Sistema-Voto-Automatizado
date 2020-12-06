@@ -1,17 +1,12 @@
 <?php
+    require_once '../../Data/DataBase.php';
 
+    $db = new DB();
 
-
-    require_once '../../AdminModel\ManagePuesto.php';
-    require_once '../../AdminModel\ManagePartido.php';
-    
-    $managepartido = new ManagePartido();
-    $managepuesto = new ManagePuesto();
-   
-
-    $resultpartido =  $managepartido->FilterNombrePartido();
-    $resultpuesto =  $managepuesto->FilterNombrePuesto();
-
+    $query = "SELECT * FROM puesto_electivo";
+    $result1 = $db->connect()->query($query);
+    $query = "SELECT * FROM partidos";
+    $resultpartido = $db->connect()->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -32,25 +27,44 @@
 <header>
     <nav class="navbar navbar-dark bg-primary">
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="list-style-type: none">
          <li class="nav-item active">
-          <a href="../AdminHome.php" class="btn btn-danger"><span>Volver</span></a>
+          <a href="HomeCandidatos.php" class="btn btn-danger"><span>Volver</span></a>
          </li>
         </ul>
     </nav>
   </header>
-  <div class="main">
-            <div class="row">
-                <div class="col-text-center">
-                    <div class="col-sm-12">
-                    <form method="POST" action="../../AdminController/AdmCandidatos.php" enctype="multipart/form-data">
+  <div class="container">
+    <div class="row">
+        <form action="AddPuestos.php" method="post" class="form-inline" enctype="multipart/form-data">
+            <div class="form-group row">                         
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre" />
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" /> 
+                <select class="form-control" name="partido">
+                <option value="" style="display: none;">Partido</option>
+                <?php while($row = $resultpartido->fetch()) { ?>
+                <option value=<?php echo $row['partidoid']?>><?php echo $row['nombre']?></option>
+                <?php }?> 
+                </select>
+                <select class="form-control" name="estado">   
+                    <option value="" style="display: none;">Estado</option>        
+                    <option value=1>Activo</option>        
+                    <option value=0>Inactivo</option>        
+                </select>           
+
+                <button type="submit" class="btn btn-success">Guardar Formulario</button>
+                <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>
+            </div>
+        </form>
+    </div>
+                    <!-- <form method="POST" action="../../AdminController/AdmCandidatos.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" name="nombre" class="form-control" placeholder="Nombre"/>
                         <div>
                         <div class="form-group">
                             <input type="text" name="apellido" class="form-control" placeholder="Apellido"/>
-                        <div>
-                        <div class="form-group">
+                        <div> -->
+                        <!-- <div class="form-group">
                             <select class="form-control" name="partido" id="exampleFormControlSelect1">
                             <?php while($row = $resultpartido->fetch(PDO::FETCH_ASSOC)):?>
 
@@ -76,13 +90,13 @@
                         <div class="form-group">
                             <input type="file" name="foto" class="form-control"/>
                         <div>
-                            <input type="submit" class="btn btn-dark" value="Agregar"/>
+                            <input type="submit" class="btn btn-dark" value="Agregar"/> -->
                         
                         
-                    </form>
+                    <!-- </form>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 </body>
 </html>
