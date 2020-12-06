@@ -2,10 +2,10 @@
 <?php
 
 require_once '../Data/DataBase.php';
-
+require_once '../Model/Elector.php';
 
     $db = new DB();
-    
+    $vt = new Votos();
     $query = "SELECT * FROM candidatos";
     $result = $db->connect()->query($query);
 
@@ -15,7 +15,7 @@ require_once '../Data/DataBase.php';
         INNER JOIN usuario U ON C.id = U.id" ; */
         
           
-        $query2 = "SELECT C.puestoid,C.partidoid,C.candidatoid,PA.nombrepa,C.apellido, PU.puestoid,PU.nombrepu, 
+        $query2 = "SELECT C.puestoid,C.partidoid,C.foto,C.candidatoid,PA.nombrepa,C.apellido, PU.puestoid,PU.nombrepu, 
         PA.partidoid,C.nombre FROM candidatos C
         INNER JOIN puesto_electivo PU ON C.puestoid = PU.puestoid
         INNER JOIN partidos PA ON C.partidoid= PA.partidoid";
@@ -26,6 +26,18 @@ require_once '../Data/DataBase.php';
      $result2 = $db->connect()->query($query2);
    //  $row = $result2->fetch(PDO::FETCH_ASSOC);
      //var_dump($row['nombre']);
+
+     
+     $enable_disabled = "disabled";
+     if(isset($_GET['id'])){
+        $enable_disabled = "enabled";
+            if(isset($_POST['voto'])){
+                $id = $_GET['id'];
+                $vt->SumarVotos($_GET['id']);
+              
+              
+            }
+     }
 ?>
 
 
@@ -69,18 +81,34 @@ body{
     <div class="row">
         <div class="col col-sm-10">
 
+            
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">Puesto Electoral</div>
+                <img class="card-img-top" src="../Design/votonull.jpg"  alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title">VOTO NULLO, ESTE VOTO NO CONTARA PARA NINGUN CANDIDATO</h5>
+                   
+                    </div>
+                <div class="card-footer bg-transparent border-light">
+                    <center><a href="SeleccionPresidente.php?id=<?php echo $row['candidatoid']?>" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
+                </div>
+             </div>
+
             <?php if($result2->rowCount() > 0):?>
                 <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)):?>
                     <?php if($row['nombrepu'] == 'Regidor'):?>
+                        <?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
+
             <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
                 <div class="card-header">Puesto Electoral</div>
+                <img class="card-img-top" src="<?php echo  $posted_image; ?>"  alt="Card image cap">
                     <div class="card-body">
                     <h5 class="card-title"><?php echo "Candidato: " . $row['nombre'] . " " . $row['apellido']?></h5>
                     <p class="card-text"><?php echo "Puesto: " . $row['nombrepu']?></p>
                     <p class="card-text"><?php echo "Partido: " . $row['nombrepa']?></p>
                     </div>
                 <div class="card-footer bg-transparent border-light">
-                    <center><a href="SeleccionPresidente.php" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
+                    <center><a href="SeleccionRegidor.php?id=<?php echo $row['candidatoid']?>" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
                 </div>
             </div>
                     <?php endif;?>
@@ -90,5 +118,10 @@ body{
         </div>
     </div>
 </div>
+<div>
+        <form method="POST" action="SeleccionRegidor.php?id=<?php echo $_GET['id']?>">
+             <input class="btn btn-info btn-lg" type="submit" name="voto" <?php echo $enable_disabled?> value="Continuar"/>
+        </form>
+    </div>
 </body>
 </html>

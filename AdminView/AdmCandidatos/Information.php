@@ -8,7 +8,7 @@ require_once '../../Data/DataBase.php';
             $query = "SELECT * FROM puesto_electivo WHERE puestoid=$id";
             $resultpuesto = $this->connect()->query($query);
             $data = $resultpuesto->fetch();
-            $nombre = $data['nombre'];
+            $nombre = $data['nombrepu'];
             return $nombre;
         }
 
@@ -17,7 +17,7 @@ require_once '../../Data/DataBase.php';
             $query = "SELECT * FROM partidos WHERE partidoid=$id";
             $resultpartido = $this->connect()->query($query);
             $data = $resultpartido->fetch();
-            $nombre = $data['nombre'];
+            $nombre = $data['nombrepa'];
             return $nombre;
         }
     }

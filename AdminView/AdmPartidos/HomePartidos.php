@@ -53,7 +53,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                     <div class="card" style="width: 18rem;">
                         <img width="80px" height="80px" class="card-img-top" src="<?php echo  $posted_image; ?>" />
                         <div class="card-body">
-                            <a class="card-text"><?php echo $row['nombre']?></a>
+                            <a class="card-text"><?php echo $row['nombrepa']?></a>
                             <a class="card-text"><?php echo $row['descripcion']?></a> <a>-</a>
                             <?php
                                 if ($row['estado'] == 1) {
@@ -80,3 +80,22 @@ require_once '../../Model/PuestoElectoral/puesto.php';
             </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+<?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
+            <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" src="<?php echo  $posted_image; ?>"  alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title"><?php echo "Candidato: " . $row['nombre'] . " " . $row['apellido']?></h5>
+                <p class="card-text"><?php echo "Puesto: " . $row['nombrepu']?></p>
+                <p class="card-text"><small class="text-muted"><?php echo "Partido: " . $row['nombrepa']?></small></p>
+                <center><a href="SeleccionPresidente.php?id=<?php echo $row['candidatoid']?>" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
+                </div>
+            </div>

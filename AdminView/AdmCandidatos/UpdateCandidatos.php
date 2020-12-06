@@ -67,21 +67,21 @@
                 <input class="form-control" type="text" placeholder="Nombre" name="nombre" value="<?php echo $data['nombre']?>"/>
                 <input class="form-control" type="text" placeholder="Apellido" name="apellido" value="<?php echo $data['apellido']?>"/> 
                 <select class="form-control" name="partido">
-                <option value="<?php echo $puesto['partidoid']?>" style="display: none;"><?php echo $partido['nombre']?></option>
+                <option value="<?php echo $puesto['partidoid']?>" style="display: none;"><?php echo $partido['nombrepa']?></option>
                 <?php $query = "SELECT * FROM partidos";
                 $resultpartido = $db->connect()->query($query);
                 while($row = $resultpartido->fetch()) { ?>
-                <option value=<?php echo $row['partidoid']?>><?php echo $row['nombre']?></option>
+                <option value=<?php echo $row['partidoid']?>><?php echo $row['nombrepa']?></option>
                 <?php 
                     }
                 ?> 
                 </select>
                 <select class="form-control" name="puesto">
-                <option value="<?php echo $puesto['puestoid']?>" style="display: none;"><?php echo $puesto['nombre']?></option>
+                <option value="<?php echo $puesto['puestoid']?>" style="display: none;"><?php echo $puesto['nombrepu']?></option>
                 <?php $query = "SELECT * FROM puesto_electivo";
                 $resultpuesto = $db->connect()->query($query);
                 while($row = $resultpuesto->fetch()) { ?>
-                <option value=<?php echo $row['puestoid']?>><?php echo $row['nombre']?></option>
+                <option value=<?php echo $row['puestoid']?>><?php echo $row['nombrepu']?></option>
                 <?php 
                     }
                 ?> 
@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col-text-center">
                 <div class="col-sm-12">
-                    <img width="80px" height="80px" src="<?php echo  $posted_image; ?>" />
+                    <img width="200px" height="200px" src="<?php echo  $posted_image; ?>" />
                 </div>
             </div>
         </div>

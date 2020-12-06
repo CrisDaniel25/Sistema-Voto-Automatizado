@@ -17,7 +17,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
         $descripcion = $_POST['descripcion'];
         $logo =  addslashes(file_get_contents($_FILES['logo']['tmp_name']));
         $estado = $_POST['estado'];
-        $query2 = "UPDATE partidos SET nombre='$nombre', descripcion='$descripcion',estado='$estado', logo='$logo' WHERE partidoid=$id";
+        $query2 = "UPDATE partidos SET nombrepa='$nombre', descripcion='$descripcion',estado='$estado', logo='$logo' WHERE partidoid=$id";
         $db->connect()->query($query2);
         header('Location: HomePartidos.php');
         }
@@ -59,7 +59,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                     <form method="POST" action="UpdatePartidos.php?id=<?php echo $id;?>" enctype="multipart/form-data" class="form-inline">
                      
                     
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombre']?>" />
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombrepa']?>" />
 
                             <input type="text" name="descripcion" class="form-control" placeholder="Descripcion"  value="<?php echo $row['descripcion']?>" />
 
