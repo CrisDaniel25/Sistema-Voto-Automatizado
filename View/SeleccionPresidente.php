@@ -15,7 +15,7 @@ require_once '../Data/DataBase.php';
         INNER JOIN usuario U ON C.id = U.id" ; */
         
           
-        $query2 = "SELECT C.foto,C.puestoid,C.partidoid,C.candidatoid,PA.nombrepa,C.apellido, PU.puestoid,PU.nombrepu, 
+        $query2 = "SELECT C.foto,C.puestoid,C.partidoid,C.candidatoid,PA.logo,PA.nombrepa,C.apellido, PU.puestoid,PU.nombrepu, 
         PA.partidoid,C.nombre FROM candidatos C
         INNER JOIN puesto_electivo PU ON C.puestoid = PU.puestoid
         INNER JOIN partidos PA ON C.partidoid= PA.partidoid";
@@ -72,26 +72,17 @@ body{
             <?php if($result2->rowCount() > 0):?>
                 <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)):?>
                     <?php if($row['nombrepu'] == 'Presidente'):?>
-            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                <div class="card-header">Puesto Electoral</div>
-                    <div class="card-body">
-                    <h5 class="card-title"><?php echo "Candidato: " . $row['nombre'] . " " . $row['apellido']?></h5>
-                    <p class="card-text"><?php echo "Puesto: " . $row['nombrepu']?></p>
-                    <p class="card-text"><?php echo "Partido: " . $row['nombrepa']?></p>
-                    </div>
-                <div class="card-footer bg-transparent border-light">
-                   
-                </div>
-            </div>
-
+            
             <div class="card" style="width: 18rem;">
             <?php $posted_image = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['foto'])); ?>
+            <?php $posted_logo = 'data:image/jpeg;base64,'. base64_encode(stripslashes($row['logo'])); ?>
             <img class="card-img-top" src="<?php echo  $posted_image; ?>" alt="Card image cap">
+         
             <div class="card-body">
             <h5 class="card-title"><?php echo "Candidato: " . $row['nombre'] . " " . $row['apellido']?></h5>
                     <p class="card-text"><?php echo "Puesto: " . $row['nombrepu']?></p>
                     <p class="card-text"><?php echo "Partido: " . $row['nombrepa']?></p>
-                    <center><a href="SeleccionPresidente.php" id="bt" class="btn btn-info"><b>Seleccionar</b></a><center>
+                    <center><a href="SeleccionPresidente.php" id="bt" class="btn btn-info btn-lg"><b>Seleccionar</b></a><center>
             </div>
 
             </div>
