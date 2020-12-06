@@ -58,6 +58,7 @@ require_once '../../Model/Elecciones/elecciones.php';
                 <th>Estado</th>
                 <th>Fecha</th>
                 <th></th>
+                <th></th>
             </thead>
             <tbody>
 <?php
@@ -65,7 +66,11 @@ require_once '../../Model/Elecciones/elecciones.php';
         while($row = $result->fetch()) {
         echo "<tr>";
         echo "<td>".$row['nombre'] . "</td>";
-        echo "<td>".$row['estado'] . "</td>";
+        if ($row['estado'] == 1) {
+            echo "<td>Activo<td>";
+        }else {
+            echo "<td>Inactivo<td>";
+        }
         echo "<td>".$row['fecha'] . "</td>";
         echo "<td><a href='DeleteElecciones.php?id=".$row['eleccionesid']."' class='btn btn-danger'>
         <svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-trash-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
