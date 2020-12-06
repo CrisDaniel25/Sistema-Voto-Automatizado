@@ -1,10 +1,7 @@
 <?php
-require_once '../Data/DataBase.php';
+require_once '../../Data/DataBase.php';
 
-<<<<<<< HEAD
-    require_once '../../Data/DataBase.php';
-=======
->>>>>>> 2b8b78ea04e0eecea064f3215e72fadb82d4be94
+  
 
     class ManagePartido extends DB{
         function FilterNombrePartido(){

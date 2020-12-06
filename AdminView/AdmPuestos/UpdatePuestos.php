@@ -1,7 +1,7 @@
 
 <?php
         require_once '../../AdminModel/ManagePuesto.php';
-        //require_once '../../Model/PuestoElectoral/puesto.php';
+        require_once '../../Model/PuestoElectoral/puesto.php';
 
         
     if(isset($_GET['id'])){
@@ -56,7 +56,7 @@
                     <div class="col-sm-12">
                     <form method="POST" action="UpdatePuestos.php">
                         <div class="form-group">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombre']?>"/>
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $row['nombrepu']?>"/>
                         <div>
                         <div class="form-group">
                             <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" value="<?php echo $row['descripcion']?>" />

@@ -3,9 +3,14 @@
  require_once '../../Model/Candidatos/candidatos.php';
  require_once '../../AdminModel/ManageCandidatos.php';
 
+  /*  $db = new DB();
+    
+    $query = "SELECT * FROM candidatos";
+    $result = $db->connect()->query($query);*/
+
     $managecandidato = new ManageCandidatos();
     $result = $managecandidato->mostrarcandidatos();
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +26,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
             body{
-                color:#ffffff;
+                color:#000000;
             }
         </style>
 </head>
@@ -52,7 +57,7 @@
                             <p class="card-text"><?php echo $row['nombre']?></p>
 
                         </div>
-                        <a href="#" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
+                        <a href="UpdateCandidatos.php?id=<?php echo $row['candidatoid']?>" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-pencil cll"></li></a>
                         <a href="#" ><li data-id="<?php echo $row['candidatoid']?>" class="glyphicon glyphicon-trash cl"></li></a>
                 
                         </div>
@@ -60,6 +65,7 @@
                      </div>
                 </div>
             </div>
+        
 </body>
 </html>
 
