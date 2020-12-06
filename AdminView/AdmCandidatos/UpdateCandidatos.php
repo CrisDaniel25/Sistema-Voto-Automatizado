@@ -6,10 +6,17 @@
     $db = new DB();
     $candidatos = new Candidatos();
     if(isset($_GET['id'])){ $candidatos->candidatoid = $_GET['id']; }
-    $query = "SELECT * FROM puesto_electivo";
+    $query = "SELECT * FROM candidatos WHERE candidatoid=$candidatos->candidatoid";
+    $result = $db->connect()->query($query);
+    $data = $result->fetch();
+    $candidatos->puesto = $data['puestoid'];
+    $candidatos->partido = $data['partidoid'];
+    $query = "SELECT * FROM puesto_electivo WHERE puestoid=$candidatos->puesto";
     $resultpuesto = $db->connect()->query($query);
-    $query = "SELECT * FROM partidos WHERE partidoid";
+    $puesto = $resultpuesto->fetch();
+    $query = "SELECT * FROM partidos WHERE partidoid=$candidatos->partido";
     $resultpartido = $db->connect()->query($query);
+    $partido = $resultpartido->fetch();
 
     if ($_POST && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['estado'])) {
 
@@ -44,30 +51,44 @@
     <div class="row">
         <form action="UpdateCandidatos.php?id=<?php echo $candidatos->candidatoid;?>" method="post" class="form-inline" enctype="multipart/form-data">
             <div class="form-group row">                         
-                <input class="form-control" type="text" placeholder="Nombre" name="nombre" />
-                <input class="form-control" type="text" placeholder="Apellido" name="apellido" /> 
-                <!-- <select class="form-control" name="partido">
-                <option value="" style="display: none;">Partido</option>
-                <?php while($row = $resultpartido->fetch()) { ?>
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre" value="<?php echo $data['nombre']?>"/>
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" value="<?php echo $data['apellido']?>"/> 
+                <select class="form-control" name="partido">
+                <option value="<?php echo $puesto['partidoid']?>" style="display: none;"><?php echo $partido['nombre']?></option>
+                <?php $query = "SELECT * FROM partidos";
+                $resultpartido = $db->connect()->query($query);
+                while($row = $resultpartido->fetch()) { ?>
                 <option value=<?php echo $row['partidoid']?>><?php echo $row['nombre']?></option>
                 <?php 
                     }
                 ?> 
                 </select>
                 <select class="form-control" name="puesto">
-                <option value="" style="display: none;">Puesto</option>
-                <?php while($row = $resultpuesto->fetch()) { ?>
+                <option value="<?php echo $puesto['puestoid']?>" style="display: none;"><?php echo $puesto['nombre']?></option>
+                <?php $query = "SELECT * FROM puesto_electivo";
+                $resultpuesto = $db->connect()->query($query);
+                while($row = $resultpuesto->fetch()) { ?>
                 <option value=<?php echo $row['puestoid']?>><?php echo $row['nombre']?></option>
                 <?php 
                     }
                 ?> 
-                </select> -->
-                <input class="form-control" type="file" name="foto" />
-                <select class="form-control" name="estado">   
-                    <option value="" style="display: none;">Estado</option>        
-                    <option value=1>Activo</option>        
-                    <option value=0>Inactivo</option>        
-                </select>           
+                </select>
+                <input class="form-control" type="file" name="foto"/>
+                <select class="form-control" name="estado">                    
+                    <?php if ($data['estado'] == 1) { ?> 
+                            <option select value=1>Activo</option>
+                    <?php }else { ?>
+                            <option value=1>Activo</option>
+                        
+                    <?php } ?>
+
+                    <?php if ($data['estado'] == 0) { ?> 
+                            <option select value=0>Inactivo</option>
+                    <?php }else { ?>
+                            <option value=0>Inactivo</option>
+                        
+                    <?php } ?>
+                </select>          
 
                 <button type="submit" class="btn btn-success">Guardar Formulario</button>
                 <button type="reset" value="Clear" class="btn btn-danger">Borrar Formulario</button>
