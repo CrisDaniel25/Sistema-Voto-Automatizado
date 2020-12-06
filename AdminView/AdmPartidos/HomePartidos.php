@@ -71,7 +71,7 @@ require_once '../../Model/PuestoElectoral/puesto.php';
                 <div class="col-text-center">
                     <div class="col-sm-8">
                         <?php while($row = $result->fetch(PDO::FETCH_ASSOC)):?>
-                            <?php $posted_image = "data:image/jpg;base64,". base64_encode($row['logo']); ?>
+                            <?php $posted_image = "data:image/jpg;base64,". base64_encode(stripslashes($row['logo'])); ?>
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="<?php echo  $posted_image; ?>" />
                         <div class="card-body">
