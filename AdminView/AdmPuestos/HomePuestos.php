@@ -72,7 +72,7 @@ require_once '../../Model/Ciudadano/ciudadano.php';
     if( $result->rowCount() > 0) {
         while($row = $result->fetch()) {
         echo "<tr>";
-        echo "<td>".$row['nombre']."</td>";
+        echo "<td>".$row['nombrepu']."</td>";
         echo "<td>".$row['descripcion']."</td>";
         if ($row['estado'] == 1) {
             echo "<td>Activo<td>";
